@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.spnapplication.ui.home.HomeFragment"
+        android:name="com.example.spnapplication.KeyPadFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_keypad" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.spnapplication.ui.dashboard.DashboardFragment"
+        android:name="com.example.spnapplication.FavoriteFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_favorite" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.spnapplication.ui.notifications.NotificationsFragment"
+        android:name="com.example.spnapplication.RecentRecordsFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_recentrecords" />
 </navigation>

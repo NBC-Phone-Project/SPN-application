@@ -1,4 +1,4 @@
-package com.example.spnapplication.ui.dashboard
+package com.example.spnapplication
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,12 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.spnapplication.databinding.FragmentDashboardBinding
+import com.example.spnapplication.databinding.FragmentRecentrecordsBinding
 
-class DashboardFragment : Fragment() {
+class RecentRecordsFragment : Fragment() {
 
-    private var _binding: FragmentDashboardBinding? = null
+    private var _binding: FragmentRecentrecordsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,10 +22,10 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentRecentrecordsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
+        val textView: TextView = binding.textNotifications
         return root
     }
 
