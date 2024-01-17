@@ -15,7 +15,9 @@
         <activity
             android:name=".EditMyPageActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".AddContactActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
