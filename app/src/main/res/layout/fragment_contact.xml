@@ -1,14 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ContactFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_contact_topbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="36dp"
+        android:background="#68A4FF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/iv_contact_contactIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="#4473FF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_contact_topbar" />
+
+    <ImageView
+        android:id="@+id/ib_main_viewChange"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="#4473FF"
+        app:layout_constraintEnd_toStartOf="@+id/ib_contact_goToContactAdd"
+        app:layout_constraintTop_toBottomOf="@+id/iv_contact_contactIcon" />
+
+    <ImageView
+        android:id="@+id/ib_contact_goToContactAdd"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="#7394F7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_contact_contactIcon" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_contact_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ib_contact_goToContactAdd" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="41dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="86dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
