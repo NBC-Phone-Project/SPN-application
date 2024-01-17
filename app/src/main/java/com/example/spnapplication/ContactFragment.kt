@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.spnapplication.databinding.FragmentContactBinding
 
 class ContactFragment : Fragment() {
@@ -135,7 +136,7 @@ class ContactFragment : Fragment() {
         binding?.rvContactRecyclerView?.adapter = adapter
         binding?.rvContactRecyclerView?.layoutManager = LinearLayoutManager(requireContext())
 
-        binding?.rvContactRecyclerView?.addItemDecoration(HeaderItemDecoration(binding?.rvContactRecyclerView) { itemPosition: Int -> userList[itemPosition] is UserItems.UserTitle})
+        binding?.rvContactRecyclerView?.addItemDecoration(HeaderItemDecoration(binding?.rvContactRecyclerView as RecyclerView) { itemPosition: Int -> userList[itemPosition] is UserItems.UserTitle})
 
         return binding?.root
     }
