@@ -15,14 +15,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/iv_contact_contactIcon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="#4473FF"
-        app:layout_constraintEnd_toEndOf="parent"
+    <TextView
+        android:id="@+id/tv_contact_appIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SPN"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_contact_topbar" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        />
 
     <ImageView
         android:id="@+id/ib_main_viewChange"
@@ -30,7 +34,7 @@
         android:layout_height="48dp"
         android:src="#4473FF"
         app:layout_constraintEnd_toStartOf="@+id/ib_contact_goToContactAdd"
-        app:layout_constraintTop_toBottomOf="@+id/iv_contact_contactIcon" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline" />
 
     <ImageView
         android:id="@+id/ib_contact_goToContactAdd"
@@ -38,7 +42,7 @@
         android:layout_height="48dp"
         android:src="#7394F7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_contact_contactIcon" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_contact_recyclerView"
@@ -47,20 +51,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ib_contact_goToContactAdd" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="41dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="86dp" />
+        app:layout_constraintGuide_percent="0.25"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
