@@ -128,12 +128,14 @@ class ContactFragment : Fragment() {
                 "010-1111,2222",
                 "CSKim@naver.com",
                 "CSKim@naver.com"
-            ),
+            )
         )
 
         val adapter = UserAdapter(userList)
         binding?.rvContactRecyclerView?.adapter = adapter
         binding?.rvContactRecyclerView?.layoutManager = LinearLayoutManager(requireContext())
+
+        binding?.rvContactRecyclerView?.addItemDecoration(HeaderItemDecoration(binding?.rvContactRecyclerView) { itemPosition: Int -> userList[itemPosition] is UserItems.UserTitle})
 
         return binding?.root
     }
