@@ -6,43 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".ContactFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_contact_topbar"
-        android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:background="#68A4FF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/tv_contact_appIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SPN"
+        android:text="@string/contact_appIcon"
         android:textSize="32sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ib_main_viewChange"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:src="#4473FF"
-        app:layout_constraintEnd_toStartOf="@+id/ib_contact_goToContactAdd"
-        app:layout_constraintBottom_toTopOf="@+id/guideline" />
+        android:src="@drawable/ic_contact_gridview_24dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/ib_contact_goToAddContact" />
 
     <ImageView
-        android:id="@+id/ib_contact_goToContactAdd"
+        android:id="@+id/ib_contact_goToAddContact"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:src="#7394F7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/guideline" />
+        android:src="@drawable/ic_contact_gotoaddcontact_24dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_contact_recyclerView"
@@ -58,7 +48,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25"/>
+        app:layout_constraintGuide_percent="0.25" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fb_contact_floating"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/level2"
+        android:src="@drawable/ic_contact_floating_24dp"
+        android:visibility="visible"
+        app:borderWidth="0dp"
+        app:fabCustomSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="@color/level4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
