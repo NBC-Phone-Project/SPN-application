@@ -4,33 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="16dp"
+    android:paddingTop="20dp"
     tools:context=".MyPageFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_edit"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+    <ImageView
+        android:id="@+id/ic_edit"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="4dp"
+        android:src="@drawable/ic_mypage_edit_24px"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/ic_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_edit_40dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iv_myProfile"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="76dp"
-        android:src="@drawable/iv_profile_200dp"
+        android:background="@drawable/shape_mypage_circle_profile"
+        android:clipToOutline="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/iv_mypage_myprofile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -51,10 +46,10 @@
         android:id="@+id/cl_myPhoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="28dp"
-        android:background="@drawable/mypage_shape_name"
-        android:paddingVertical="10dp"
+        android:background="@drawable/shape_mypage_blank"
+        android:paddingVertical="12dp"
+        android:paddingStart="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_myname">
@@ -66,7 +61,6 @@
             android:text="@string/mypage_my_phone_number"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:layout_marginStart="10dp"
             app:layout_constraintBottom_toTopOf="@+id/tv_myPhoneNumberData"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -74,7 +68,7 @@
 
         <TextView
             android:id="@+id/tv_myPhoneNumberData"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="@string/mypage_please_edit"
@@ -89,10 +83,10 @@
         android:id="@+id/cl_myEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="20dp"
-        android:paddingVertical="10dp"
-        android:background="@drawable/mypage_shape_name"
+        android:background="@drawable/shape_mypage_blank"
+        android:paddingVertical="12dp"
+        android:paddingStart="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_myPhoneNumber">
@@ -104,7 +98,6 @@
             android:text="@string/mypage_email"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:layout_marginStart="10dp"
             app:layout_constraintBottom_toTopOf="@+id/tv_myEailData"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -112,7 +105,7 @@
 
         <TextView
             android:id="@+id/tv_myEailData"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="@string/mypage_please_edit"
@@ -127,11 +120,11 @@
         android:id="@+id/cl_myMemo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/shape_mypage_blank"
+        android:minHeight="48dp"
         android:paddingVertical="10dp"
-        android:background="@drawable/mypage_shape_name"
+        android:paddingStart="12dp"
         android:paddingTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -144,7 +137,6 @@
             android:text="@string/mypage_memo"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:layout_marginStart="10dp"
             app:layout_constraintBottom_toTopOf="@+id/tv_myMemoData"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -152,9 +144,10 @@
 
         <TextView
             android:id="@+id/tv_myMemoData"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:minHeight="80dp"
             android:text="@string/mypage_please_edit"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@+id/tv_myMemo"
