@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.viewpager2.widget.ViewPager2
 import com.example.spnapplication.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -37,11 +36,11 @@ class MainActivity : AppCompatActivity() {
             adapter = viewPager2Adatper
         }
         val iconList = ArrayList<Drawable?>()
-        iconList.add(ContextCompat.getDrawable(this, R.drawable.circle))
-        iconList.add(ContextCompat.getDrawable(this, R.drawable.circle))
-        iconList.add(ContextCompat.getDrawable(this, R.drawable.circle))
-        iconList.add(ContextCompat.getDrawable(this, R.drawable.circle))
-        iconList.add(ContextCompat.getDrawable(this, R.drawable.circle))
+        iconList.add(ContextCompat.getDrawable(this, R.drawable.ic_circle))
+        iconList.add(ContextCompat.getDrawable(this, R.drawable.ic_circle))
+        iconList.add(ContextCompat.getDrawable(this, R.drawable.ic_circle))
+        iconList.add(ContextCompat.getDrawable(this, R.drawable.ic_circle))
+        iconList.add(ContextCompat.getDrawable(this, R.drawable.ic_circle))
 
 
         //ViewPager, TabLayout 연결
