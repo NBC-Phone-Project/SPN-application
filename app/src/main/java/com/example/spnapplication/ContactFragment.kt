@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spnapplication.databinding.FragmentContactBinding
 
@@ -25,35 +26,35 @@ class ContactFragment : Fragment() {
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "김철수",
-                "010-1111,2222",
+                "010-1111-2222",
                 "CSKim@naver.com",
                 "CSKim@naver.com"
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "김철수",
-                "010-1111,2222",
+                "010-1111-2222",
                 "CSKim@naver.com",
                 "CSKim@naver.com"
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "김철수",
-                "010-1111,2222",
+                "010-1111-2222",
                 "CSKim@naver.com",
                 "CSKim@naver.com"
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "김철수",
-                "010-1111,2222",
+                "010-1111-2222",
                 "CSKim@naver.com",
                 "CSKim@naver.com"
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "김철수",
-                "010-1111,2222",
+                "010-1111-2222",
                 "CSKim@naver.com",
                 "CSKim@naver.com"
             ),
@@ -61,35 +62,35 @@ class ContactFragment : Fragment() {
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "노민수",
-                "010-1111,2222",
+                "010-1111-2222",
                 "CSKim@naver.com",
                 "CSKim@naver.com"
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "노민수",
-                "010-1111,2222",
+                "010-1111-2222",
                 "CSKim@naver.com",
                 "CSKim@naver.com"
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "노민수",
-                "010-1111,2222",
+                "010-1111-2222",
                 "CSKim@naver.com",
                 "CSKim@naver.com"
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "노민수",
-                "010-1111,2222",
+                "010-1111-2222",
                 "CSKim@naver.com",
                 "CSKim@naver.com"
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "노민수",
-                "010-1111,2222",
+                "010-1111-2222",
                 "CSKim@naver.com",
                 "CSKim@naver.com"
             ),
@@ -97,35 +98,35 @@ class ContactFragment : Fragment() {
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "도기백",
-                "010-1111,2222",
+                "010-1111-2222",
                 "CSKim@naver.com",
                 "CSKim@naver.com"
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "도기백",
-                "010-1111,2222",
+                "010-1111-2222",
                 "CSKim@naver.com",
                 "CSKim@naver.com"
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "도기백",
-                "010-1111,2222",
+                "010-1111-2222",
                 "CSKim@naver.com",
                 "CSKim@naver.com"
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "도기백",
-                "010-1111,2222",
+                "010-1111-2222",
                 "CSKim@naver.com",
                 "CSKim@naver.com"
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "도기백",
-                "010-1111,2222",
+                "010-1111-2222",
                 "CSKim@naver.com",
                 "CSKim@naver.com"
             ),
