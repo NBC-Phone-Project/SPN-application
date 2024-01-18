@@ -30,35 +30,40 @@ class ContactFragment : Fragment() {
                 "김철수",
                 "010-1111-2222",
                 "CSKim@naver.com",
-                "CSKim@naver.com"
+                "CSKim@naver.com",
+                false
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "김철수",
                 "010-1111-2222",
                 "CSKim@naver.com",
-                "CSKim@naver.com"
+                "CSKim@naver.com",
+                false
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "김철수",
                 "010-1111-2222",
                 "CSKim@naver.com",
-                "CSKim@naver.com"
+                "CSKim@naver.com",
+                false
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "김철수",
                 "010-1111-2222",
                 "CSKim@naver.com",
-                "CSKim@naver.com"
+                "CSKim@naver.com",
+                false
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "김철수",
                 "010-1111-2222",
                 "CSKim@naver.com",
-                "CSKim@naver.com"
+                "CSKim@naver.com",
+                false
             ),
             UserItems.UserTitle("ㄴ"),
             UserItems.UserInfo(
@@ -66,35 +71,40 @@ class ContactFragment : Fragment() {
                 "노민수",
                 "010-1111-2222",
                 "CSKim@naver.com",
-                "CSKim@naver.com"
+                "CSKim@naver.com",
+                false
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "노민수",
                 "010-1111-2222",
                 "CSKim@naver.com",
-                "CSKim@naver.com"
+                "CSKim@naver.com",
+                false
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "노민수",
                 "010-1111-2222",
                 "CSKim@naver.com",
-                "CSKim@naver.com"
+                "CSKim@naver.com",
+                false
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "노민수",
                 "010-1111-2222",
                 "CSKim@naver.com",
-                "CSKim@naver.com"
+                "CSKim@naver.com",
+                false
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "노민수",
                 "010-1111-2222",
                 "CSKim@naver.com",
-                "CSKim@naver.com"
+                "CSKim@naver.com",
+                false
             ),
             UserItems.UserTitle("ㄷ"),
             UserItems.UserInfo(
@@ -102,35 +112,40 @@ class ContactFragment : Fragment() {
                 "도기백",
                 "010-1111-2222",
                 "CSKim@naver.com",
-                "CSKim@naver.com"
+                "CSKim@naver.com",
+                false
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "도기백",
                 "010-1111-2222",
                 "CSKim@naver.com",
-                "CSKim@naver.com"
+                "CSKim@naver.com",
+                false
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "도기백",
                 "010-1111-2222",
                 "CSKim@naver.com",
-                "CSKim@naver.com"
+                "CSKim@naver.com",
+                false
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "도기백",
                 "010-1111-2222",
                 "CSKim@naver.com",
-                "CSKim@naver.com"
+                "CSKim@naver.com",
+                false
             ),
             UserItems.UserInfo(
                 R.mipmap.ic_launcher,
                 "도기백",
                 "010-1111-2222",
                 "CSKim@naver.com",
-                "CSKim@naver.com"
+                "CSKim@naver.com",
+                false
             ),
         )
 
@@ -143,7 +158,8 @@ class ContactFragment : Fragment() {
         val fadeIn = AlphaAnimation(0f, 1f).apply { duration = 500 }
         val fadeOut = AlphaAnimation(1f, 0f).apply { duration = 500 }
         var isTop = true
-        binding?.rvContactRecyclerView?.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+        binding?.rvContactRecyclerView?.addOnScrollListener(object :
+            RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (binding?.rvContactRecyclerView?.canScrollVertically(-1) == false && newState == RecyclerView.SCROLL_STATE_IDLE) {
@@ -151,7 +167,7 @@ class ContactFragment : Fragment() {
                     binding?.fbContactFloating?.visibility = View.GONE
                     isTop = true
                 } else {
-                    if (isTop){
+                    if (isTop) {
                         binding?.fbContactFloating?.visibility = View.VISIBLE
                         binding?.fbContactFloating?.startAnimation(fadeIn)
                         isTop = false
