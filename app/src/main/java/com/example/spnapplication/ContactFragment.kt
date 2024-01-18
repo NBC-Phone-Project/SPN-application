@@ -1,5 +1,7 @@
 package com.example.spnapplication
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +28,7 @@ class ContactFragment : Fragment() {
         val userList = mutableListOf(
             UserItems.UserTitle("ㄱ"),
             UserItems.UserInfo(
-                R.mipmap.ic_launcher,
+                R.drawable.iv_mypage_myprofile,
                 "김철수",
                 "010-1111-2222",
                 "CSKim@naver.com",
@@ -34,7 +36,7 @@ class ContactFragment : Fragment() {
                 false
             ),
             UserItems.UserInfo(
-                R.mipmap.ic_launcher,
+                R.drawable.iv_mypage_myprofile,
                 "김철수",
                 "010-1111-2222",
                 "CSKim@naver.com",
@@ -42,7 +44,7 @@ class ContactFragment : Fragment() {
                 false
             ),
             UserItems.UserInfo(
-                R.mipmap.ic_launcher,
+                R.drawable.iv_mypage_myprofile,
                 "김철수",
                 "010-1111-2222",
                 "CSKim@naver.com",
@@ -50,7 +52,7 @@ class ContactFragment : Fragment() {
                 false
             ),
             UserItems.UserInfo(
-                R.mipmap.ic_launcher,
+                R.drawable.iv_mypage_myprofile,
                 "김철수",
                 "010-1111-2222",
                 "CSKim@naver.com",
@@ -58,7 +60,7 @@ class ContactFragment : Fragment() {
                 false
             ),
             UserItems.UserInfo(
-                R.mipmap.ic_launcher,
+                R.drawable.iv_mypage_myprofile,
                 "김철수",
                 "010-1111-2222",
                 "CSKim@naver.com",
@@ -67,7 +69,7 @@ class ContactFragment : Fragment() {
             ),
             UserItems.UserTitle("ㄴ"),
             UserItems.UserInfo(
-                R.mipmap.ic_launcher,
+                R.drawable.iv_mypage_myprofile,
                 "노민수",
                 "010-1111-2222",
                 "CSKim@naver.com",
@@ -75,7 +77,7 @@ class ContactFragment : Fragment() {
                 false
             ),
             UserItems.UserInfo(
-                R.mipmap.ic_launcher,
+                R.drawable.iv_mypage_myprofile,
                 "노민수",
                 "010-1111-2222",
                 "CSKim@naver.com",
@@ -83,7 +85,7 @@ class ContactFragment : Fragment() {
                 false
             ),
             UserItems.UserInfo(
-                R.mipmap.ic_launcher,
+                R.drawable.iv_mypage_myprofile,
                 "노민수",
                 "010-1111-2222",
                 "CSKim@naver.com",
@@ -91,7 +93,7 @@ class ContactFragment : Fragment() {
                 false
             ),
             UserItems.UserInfo(
-                R.mipmap.ic_launcher,
+                R.drawable.iv_mypage_myprofile,
                 "노민수",
                 "010-1111-2222",
                 "CSKim@naver.com",
@@ -99,7 +101,7 @@ class ContactFragment : Fragment() {
                 false
             ),
             UserItems.UserInfo(
-                R.mipmap.ic_launcher,
+                R.drawable.iv_mypage_myprofile,
                 "노민수",
                 "010-1111-2222",
                 "CSKim@naver.com",
@@ -108,7 +110,7 @@ class ContactFragment : Fragment() {
             ),
             UserItems.UserTitle("ㄷ"),
             UserItems.UserInfo(
-                R.mipmap.ic_launcher,
+                R.drawable.iv_mypage_myprofile,
                 "도기백",
                 "010-1111-2222",
                 "CSKim@naver.com",
@@ -116,7 +118,7 @@ class ContactFragment : Fragment() {
                 false
             ),
             UserItems.UserInfo(
-                R.mipmap.ic_launcher,
+                R.drawable.iv_mypage_myprofile,
                 "도기백",
                 "010-1111-2222",
                 "CSKim@naver.com",
@@ -124,7 +126,7 @@ class ContactFragment : Fragment() {
                 false
             ),
             UserItems.UserInfo(
-                R.mipmap.ic_launcher,
+                R.drawable.iv_mypage_myprofile,
                 "도기백",
                 "010-1111-2222",
                 "CSKim@naver.com",
@@ -132,7 +134,7 @@ class ContactFragment : Fragment() {
                 false
             ),
             UserItems.UserInfo(
-                R.mipmap.ic_launcher,
+                R.drawable.iv_mypage_myprofile,
                 "도기백",
                 "010-1111-2222",
                 "CSKim@naver.com",
@@ -140,7 +142,7 @@ class ContactFragment : Fragment() {
                 false
             ),
             UserItems.UserInfo(
-                R.mipmap.ic_launcher,
+                R.drawable.iv_mypage_myprofile,
                 "도기백",
                 "010-1111-2222",
                 "CSKim@naver.com",
@@ -153,6 +155,24 @@ class ContactFragment : Fragment() {
         binding?.rvContactRecyclerView?.adapter = adapter
         binding?.rvContactRecyclerView?.layoutManager = LinearLayoutManager(requireContext())
 
+        // StickyHeader (리사이클러 뷰 스크롤 이동 시 타이틀 고정 효과) 적용
+        binding?.rvContactRecyclerView?.addItemDecoration(StickyHeader(
+            binding?.rvContactRecyclerView as RecyclerView
+        ) { itemPosition: Int ->
+            userList[itemPosition] is UserItems.UserTitle
+        })
+
+        // 통화 아이콘 클릭 시 CALL 액션 및 Intent로 전화번호 데이터 전달
+        adapter.itemClick = object : UserAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                // 선택된 유저
+                val selectedUser = userList[position] as UserItems.UserInfo
+                // Intent로 전화걸기
+                val intent = Intent(Intent.ACTION_DIAL)
+                intent.data = Uri.parse("tel:${selectedUser.aUserNumber}")
+                startActivity(intent)
+            }
+        }
 
         // 플로팅 버튼
         val fadeIn = AlphaAnimation(0f, 1f).apply { duration = 500 }
