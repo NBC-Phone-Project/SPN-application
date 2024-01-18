@@ -9,5 +9,6 @@ data class UserInfo(
     val userName: String,
     val userNumber: String,
     val userEmail: String,
-    val userMemo: String
+    val userMemo: String,
+    val isLike : Boolean
 ) : Parcelable
