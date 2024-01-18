@@ -6,7 +6,8 @@ sealed interface UserItems {
         var aUserName: String,
         var aUserNumber: String,
         var aUserEmail: String,
-        var aUserMemo: String
+        var aUserMemo: String,
+        var aIsLike: Boolean
     ) : UserItems
 
     data class UserTitle(var aTitle: String) : UserItems
