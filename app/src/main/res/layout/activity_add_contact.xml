@@ -9,10 +9,11 @@
     tools:context=".AddContactActivity">
 
     <ImageButton
+        android:id="@+id/btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="#00FFFFFF"
         android:src="@drawable/ic_arrow_back_24px"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -44,7 +45,7 @@
         app:layout_constraintEnd_toEndOf="@+id/img_profile" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/et_name"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="16dp"
@@ -52,13 +53,14 @@
         android:background="@drawable/edit_text_background"
         android:ems="10"
         android:hint="@string/add_contact_name"
+        android:textSize="16sp"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_profile" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/et_phonenumber"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="16dp"
@@ -66,13 +68,14 @@
         android:ems="10"
         android:inputType="text"
         android:hint="@string/add_contact_phoneNumber"
+        android:textSize="16sp"
         android:background="@drawable/edit_text_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+        app:layout_constraintTop_toBottomOf="@+id/et_name" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/et_email"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="16dp"
@@ -80,25 +83,27 @@
         android:ems="10"
         android:inputType="text"
         android:hint="@string/add_contact_email"
+        android:textSize="16sp"
         android:background="@drawable/edit_text_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintTop_toBottomOf="@+id/et_phonenumber" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_cancel"
         android:layout_width="156dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="56dp"
         android:background="@drawable/btn_addcontact_cancel"
         android:text="@string/add_contact_cancel"
+        android:textSize="16sp"
         android:textColor="@color/level3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_save"
         android:layout_width="156dp"
         android:layout_height="40dp"
         android:layout_marginTop="56dp"
@@ -106,6 +111,7 @@
         android:background="@drawable/btn_addcontact"
         android:text="@string/add_contact_save"
         android:textColor="@color/white"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
@@ -115,9 +121,10 @@
         android:layout_height="48dp"
         android:layout_margin="16dp"
         android:layout_marginTop="20dp"
+        android:textSize="16sp"
         android:background="@drawable/edit_text_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
+        app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

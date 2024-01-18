@@ -25,7 +25,6 @@ class KeyPadFragment : Fragment() {
         _binding = FragmentKeypadBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
         return root
     }
 
