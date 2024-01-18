@@ -95,7 +95,8 @@ class DialogAddItemFragment : DialogFragment() {
         val email = binding.etEmailDialog.text.toString()
 
         if (name.isNotEmpty() && call.isNotEmpty() && email.isNotEmpty()) {
-            val item = UserItems.UserInfo(R.drawable.img_default_profile, name, call, email, "")
+            val item =
+                UserItems.UserInfo(R.drawable.img_default_profile, name, call, email, "", false)
             val parentFragment = parentFragment
             if (parentFragment is OnItemAddedListener) {
                 parentFragment.onItemAdded(item)
