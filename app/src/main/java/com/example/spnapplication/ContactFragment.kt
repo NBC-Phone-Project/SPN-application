@@ -1,5 +1,7 @@
 package com.example.spnapplication
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -160,6 +162,17 @@ class ContactFragment : Fragment() {
             userList[itemPosition] is UserItems.UserTitle
         })
 
+        // 통화 아이콘 클릭 시 CALL 액션 및 Intent로 전화번호 데이터 전달
+        adapter.itemClick = object : UserAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                // 선택된 유저
+                val selectedUser = userList[position] as UserItems.UserInfo
+                // Intent로 전화걸기
+                val intent = Intent(Intent.ACTION_DIAL)
+                intent.data = Uri.parse("tel:${selectedUser.aUserNumber}")
+                startActivity(intent)
+            }
+        }
 
         // 플로팅 버튼
         val fadeIn = AlphaAnimation(0f, 1f).apply { duration = 500 }
