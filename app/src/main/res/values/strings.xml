@@ -4,7 +4,13 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- fragment_recent_records.xml -->
+    <string name="recent_records_sticky_header_date">xxxx년 x월 xx일</string>
+    <string name="recent_records_item_content_name">이름</string>
+    <string name="recent_records_item_content_time">오전 3:46</string>
+    <string name="recent_records_title">최근기록</string>
     
     <!-- fragment_contact.xml -->
     <string name="contact_appIcon">SPN</string>
@@ -19,5 +25,23 @@
     <string name="contact_detail_email">hoho33@gamil.com</string>
     <string name="contact_detail_set_alarm_title">알림설정</string>
     <string name="contact_detail_set_alarm">5분 후에 알림 설정하기</string>
+
+    <!-- fragment_my_page.xml -->
+    <string name="mypage_my_name">홍길동</string>
+    <string name="mypage_my_phone_number">전화번호</string>
+    <string name="mypage_please_edit">편집 버튼을 눌러 정보를 입력해 주세요.</string>
+    <string name="mypage_email">이메일</string>
+    <string name="mypage_memo">메모</string>
+
+    <!-- fragment_edit_my_page.xml -->
+    <string name="edit_mypage_btn">저장</string>
+    
+    <!-- activity_add_contact.xml -->
+    <string name="add_contact_name">이름</string>
+    <string name="add_contact_phoneNumber">전화번호</string>
+    <string name="add_contact_email">이메일</string>
+    <string name="add_contact_group">그룹</string>
+    <string name="add_contact_save">저장</string>
+    <string name="add_contact_cancel">취소</string>
 
 </resources>
