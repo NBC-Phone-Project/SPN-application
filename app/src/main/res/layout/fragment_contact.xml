@@ -6,6 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".ContactFragment">
 
+    <ImageView
+        android:id="@+id/iv_contact_search"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="8dp"
+        android:background="@drawable/selector_contact_call"
+        android:src="@drawable/ic_contact_search_24dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/et_contact_search"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="56dp"
+        android:maxLines="1"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/ib_main_viewChange"
+        app:layout_constraintStart_toEndOf="@id/iv_contact_search"
+        app:layout_constraintTop_toTopOf="@+id/iv_contact_search" />
+
     <TextView
         android:id="@+id/tv_contact_appIcon"
         android:layout_width="wrap_content"
@@ -23,6 +45,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:src="@drawable/ic_contact_gridview_24dp"
+        android:background="@drawable/selector_contact_call"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toStartOf="@+id/ib_contact_goToAddContact" />
 
@@ -30,6 +53,7 @@
         android:id="@+id/ib_contact_goToAddContact"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:background="@drawable/selector_contact_call"
         android:src="@drawable/ic_contact_gotoaddcontact_24dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -63,7 +87,7 @@
         app:borderWidth="0dp"
         app:fabCustomSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
