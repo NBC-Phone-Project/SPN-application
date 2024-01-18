@@ -11,6 +11,8 @@ import com.example.spnapplication.databinding.FragmentContactItemTitleBinding
 
 class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<ViewHolder>() {
 
+    private var mItemsCopyList: MutableList<UserInfo> = mItems.map { it.copy() }.toMutableList()
+
     interface ItemClick {
         fun onClick(view: View, position: Int)
     }
@@ -92,13 +94,15 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
 
     fun search(first: String) {
         val name = first
-        if (name.isBlank()){
+
+        if (name.isBlank()) {
             mItems.clear()
-            mItems.addAll(mItems)
+            mItems.addAll(mItemsCopyList)
+        } else {
+            val filteredList = mItems.filter { it.userName.contains(name) }
+            mItems.clear()
+            mItems.addAll(filteredList)
         }
-        val filteredList = mItems.filter { it.userName.contains(name) }
-        mItems.clear()
-        mItems.addAll(filteredList)
         notifyDataSetChanged()
     }
 }
