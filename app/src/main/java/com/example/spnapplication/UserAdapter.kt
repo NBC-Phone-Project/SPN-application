@@ -80,6 +80,9 @@ class UserAdapter(val mItems: MutableList<UserItems>) : RecyclerView.Adapter<Vie
     override fun getItemCount(): Int {
         return mItems.size
     }
+    fun addContact(contact: UserItems) {
+        mItems.add(contact)
+    }
 
     override fun getItemViewType(position: Int): Int {
         return when (mItems[position]) {
