@@ -13,7 +13,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:padding="4dp"
-        android:src="@drawable/ic_edit_mypage_back_24px"
+        android:src="@drawable/ic_edit_mypage_back_24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
