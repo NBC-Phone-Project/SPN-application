@@ -5,11 +5,42 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
+    <FrameLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content">
+
+    <!--삭제 버튼 있는 레이아웃-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#eeeeee"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tvRemove"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:text="삭제"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_weight="3"/>
+
+    </LinearLayout>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_contact_goToDetailBtn"
-        android:layout_width="0dp"
+        android:layout_width="335dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:background="#eeeeee"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/iv_contact_call"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +69,10 @@
             app:layout_constraintStart_toEndOf="@+id/iv_contact_userIcon"
             app:layout_constraintTop_toTopOf="parent" />
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
 
     <ImageView
         android:id="@+id/iv_contact_call"
@@ -51,5 +85,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spnapplication.databinding.FragmentContactBinding
@@ -39,6 +41,10 @@ class ContactFragment : Fragment(), OnItemAddedListener {
         val adapter = UserAdapter(userList)
         binding?.rvContactRecyclerView?.adapter = adapter
         binding?.rvContactRecyclerView?.layoutManager = LinearLayoutManager(requireContext())
+
+        //상품 사이에 회색 줄 추가
+        val decoration = DividerItemDecoration(context, LinearLayout.VERTICAL)
+        binding?.rvContactRecyclerView?.addItemDecoration(decoration)
 
         // StickyHeader (리사이클러 뷰 스크롤 이동 시 타이틀 고정 효과) 적용
 //        binding?.rvContactRecyclerView?.addItemDecoration(StickyHeader(
