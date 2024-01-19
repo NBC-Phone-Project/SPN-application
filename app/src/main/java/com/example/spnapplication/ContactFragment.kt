@@ -59,6 +59,18 @@ class ContactFragment : Fragment(), OnItemAddedListener {
             }
         }
 
+        // DetailActivity로 데이터 전달 및 화면 전환
+        adapter.goToDetail = object : UserAdapter.GoToDetail {
+            override fun onGoToDetail(view: View, position: Int) {
+                // 선택된 유저
+                val chooseUser = userList[position]
+                // Intent로 화면 전환, li 데이터전달
+                val intent = Intent(activity, ContactDetailActivity::class.java)
+                intent.putExtra("UserInfo", chooseUser)
+                activity?.startActivity(intent)
+            }
+        }
+
         // 플로팅 버튼
         val fadeIn = AlphaAnimation(0f, 1f).apply { duration = 500 }
         val fadeOut = AlphaAnimation(1f, 0f).apply { duration = 500 }
