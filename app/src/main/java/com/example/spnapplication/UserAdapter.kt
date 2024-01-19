@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.spnapplication.databinding.FragmentContactItemRecyclerviewBinding
 import com.example.spnapplication.databinding.FragmentContactItemTitleBinding
 
-class UserAdapter(val mItems: MutableList<UserItems>) : RecyclerView.Adapter<ViewHolder>() {
+class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<ViewHolder>() {
+
+    private var mItemsCopyList: MutableList<UserInfo> = mItems.map { it.copy() }.toMutableList()
 
     interface ItemClick {
         fun onClick(view: View, position: Int)
@@ -17,10 +19,10 @@ class UserAdapter(val mItems: MutableList<UserItems>) : RecyclerView.Adapter<Vie
 
     var itemClick: ItemClick? = null
 
-    companion object {
-        private const val VIEW_TYPE_TITLE = 1
-        private const val VIEW_TYPE_NAME = 2
-    }
+//    companion object {
+//        private const val VIEW_TYPE_TITLE = 1
+//        private const val VIEW_TYPE_NAME = 2
+//    }
 
     inner class TitleViewHolder(binding: FragmentContactItemTitleBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -37,41 +39,33 @@ class UserAdapter(val mItems: MutableList<UserItems>) : RecyclerView.Adapter<Vie
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return when (viewType) {
-            VIEW_TYPE_TITLE -> {
-                val binding = FragmentContactItemTitleBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
-                TitleViewHolder(binding)
-            }
-
-            else -> {
-                val binding = FragmentContactItemRecyclerviewBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
-                UserViewHolder(binding)
-            }
-        }
+//        return when (viewType) {
+//            VIEW_TYPE_TITLE -> {
+//                val binding = FragmentContactItemTitleBinding.inflate(
+//                    LayoutInflater.from(parent.context),
+//                    parent,
+//                    false
+//                )
+//                TitleViewHolder(binding)
+//            }
+        val binding = FragmentContactItemRecyclerviewBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return UserViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        when (val item = mItems[position]) {
-            is UserItems.UserTitle -> {
-                (holder as TitleViewHolder).title.text = "${item.aTitle}"
-            }
-
-            is UserItems.UserInfo -> {
-                (holder as UserViewHolder).userName.text = item.aUserName
-                holder.userImage.setImageResource(item.aUserImage)
-                holder.userImageUri.setImageURI(item.aprofileImage)
-                holder.btnCall.setOnClickListener {
-                    itemClick?.onClick(it, position)
-                }
-            }
+        val item = mItems[position]
+//            is UserItems.UserTitle -> {
+//                (holder as TitleViewHolder).title.text = "${item.aTitle}"
+//            }
+        (holder as UserViewHolder).userName.text = item.userName
+        holder.userImage.setImageResource(item.userImage)
+        holder.userImageUri.setImageURI(item.profileImage)
+        holder.btnCall.setOnClickListener {
+            itemClick?.onClick(it, position)
         }
     }
 
@@ -83,14 +77,35 @@ class UserAdapter(val mItems: MutableList<UserItems>) : RecyclerView.Adapter<Vie
         return mItems.size
     }
 
-    fun addContact(contact: UserItems) {
+
+    fun addContact(contact: UserInfo) {
         mItems.add(contact)
+        sortList()
+        notifyDataSetChanged()
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return when (mItems[position]) {
-            is UserItems.UserTitle -> VIEW_TYPE_TITLE
-            is UserItems.UserInfo -> VIEW_TYPE_NAME
+//    override fun getItemViewType(position: Int): Int {
+//        return when (mItems[position]) {
+//            is UserItems.UserTitle -> VIEW_TYPE_TITLE
+//            is UserItems.UserInfo -> VIEW_TYPE_NAME
+//        }
+//    }
+
+    fun sortList() {
+        mItems.sortBy { it.userName }
+    }
+
+    fun search(first: String) {
+        val name = first
+
+        if (name.isBlank()) {
+            mItems.clear()
+            mItems.addAll(mItemsCopyList)
+        } else {
+            val filteredList = mItems.filter { it.userName.contains(name) }
+            mItems.clear()
+            mItems.addAll(filteredList)
         }
+        notifyDataSetChanged()
     }
 }

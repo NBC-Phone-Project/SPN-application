@@ -3,16 +3,15 @@ package com.example.spnapplication
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spnapplication.databinding.FragmentContactBinding
+import java.time.LocalDateTime
 
 class ContactFragment : Fragment(), OnItemAddedListener {
 
@@ -29,131 +28,7 @@ class ContactFragment : Fragment(), OnItemAddedListener {
         recyclerView = binding!!.rvContactRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        val userList = mutableListOf(
-            UserItems.UserTitle("ㄱ"),
-            UserItems.UserInfo(
-                R.drawable.iv_mypage_myprofile,
-                "김철수",
-                "010-1111-2222",
-                "CSKim@naver.com",
-                "CSKim@naver.com",
-                false
-            ),
-            UserItems.UserInfo(
-                R.drawable.iv_mypage_myprofile,
-                "김철수",
-                "010-1111-2222",
-                "CSKim@naver.com",
-                "CSKim@naver.com",
-                false
-            ),
-            UserItems.UserInfo(
-                R.drawable.iv_mypage_myprofile,
-                "김철수",
-                "010-1111-2222",
-                "CSKim@naver.com",
-                "CSKim@naver.com",
-                false
-            ),
-            UserItems.UserInfo(
-                R.drawable.iv_mypage_myprofile,
-                "김철수",
-                "010-1111-2222",
-                "CSKim@naver.com",
-                "CSKim@naver.com",
-                false
-            ),
-            UserItems.UserInfo(
-                R.drawable.iv_mypage_myprofile,
-                "김철수",
-                "010-1111-2222",
-                "CSKim@naver.com",
-                "CSKim@naver.com",
-                false
-            ),
-            UserItems.UserTitle("ㄴ"),
-            UserItems.UserInfo(
-                R.drawable.iv_mypage_myprofile,
-                "노민수",
-                "010-1111-2222",
-                "CSKim@naver.com",
-                "CSKim@naver.com",
-                false
-            ),
-            UserItems.UserInfo(
-                R.drawable.iv_mypage_myprofile,
-                "노민수",
-                "010-1111-2222",
-                "CSKim@naver.com",
-                "CSKim@naver.com",
-                false
-            ),
-            UserItems.UserInfo(
-                R.drawable.iv_mypage_myprofile,
-                "노민수",
-                "010-1111-2222",
-                "CSKim@naver.com",
-                "CSKim@naver.com",
-                false
-            ),
-            UserItems.UserInfo(
-                R.drawable.iv_mypage_myprofile,
-                "노민수",
-                "010-1111-2222",
-                "CSKim@naver.com",
-                "CSKim@naver.com",
-                false
-            ),
-            UserItems.UserInfo(
-                R.drawable.iv_mypage_myprofile,
-                "노민수",
-                "010-1111-2222",
-                "CSKim@naver.com",
-                "CSKim@naver.com",
-                false
-            ),
-            UserItems.UserTitle("ㄷ"),
-            UserItems.UserInfo(
-                R.drawable.iv_mypage_myprofile,
-                "도기백",
-                "010-1111-2222",
-                "CSKim@naver.com",
-                "CSKim@naver.com",
-                false
-            ),
-            UserItems.UserInfo(
-                R.drawable.iv_mypage_myprofile,
-                "도기백",
-                "010-1111-2222",
-                "CSKim@naver.com",
-                "CSKim@naver.com",
-                false
-            ),
-            UserItems.UserInfo(
-                R.drawable.iv_mypage_myprofile,
-                "도기백",
-                "010-1111-2222",
-                "CSKim@naver.com",
-                "CSKim@naver.com",
-                false
-            ),
-            UserItems.UserInfo(
-                R.drawable.iv_mypage_myprofile,
-                "도기백",
-                "010-1111-2222",
-                "CSKim@naver.com",
-                "CSKim@naver.com",
-                false
-            ),
-            UserItems.UserInfo(
-                R.drawable.iv_mypage_myprofile,
-                "도기백",
-                "010-1111-2222",
-                "CSKim@naver.com",
-                "CSKim@naver.com",
-                false
-            ),
-        )
+        val userList = Const.DummyData
 
         binding?.ibContactGoToAddContact?.setOnClickListener {
             val dialogFragment = DialogAddItemFragment()
@@ -166,20 +41,20 @@ class ContactFragment : Fragment(), OnItemAddedListener {
         binding?.rvContactRecyclerView?.layoutManager = LinearLayoutManager(requireContext())
 
         // StickyHeader (리사이클러 뷰 스크롤 이동 시 타이틀 고정 효과) 적용
-        binding?.rvContactRecyclerView?.addItemDecoration(StickyHeader(
-            binding?.rvContactRecyclerView as RecyclerView
-        ) { itemPosition: Int ->
-            userList[itemPosition] is UserItems.UserTitle
-        })
+//        binding?.rvContactRecyclerView?.addItemDecoration(StickyHeader(
+//            binding?.rvContactRecyclerView as RecyclerView
+//        ) { itemPosition: Int ->
+//            userList[itemPosition] is UserItems.UserTitle
+//        })
 
         // 통화 아이콘 클릭 시 CALL 액션 및 Intent로 전화번호 데이터 전달
         adapter.itemClick = object : UserAdapter.ItemClick{
             override fun onClick(view: View, position: Int) {
                 // 선택된 유저
-                val selectedUser = userList[position] as UserItems.UserInfo
+                val selectedUser = userList[position] as UserInfo
                 // Intent로 전화걸기
                 val intent = Intent(Intent.ACTION_DIAL)
-                intent.data = Uri.parse("tel:${selectedUser.aUserNumber}")
+                intent.data = Uri.parse("tel:${selectedUser.userNumber}")
                 startActivity(intent)
             }
         }
@@ -209,6 +84,10 @@ class ContactFragment : Fragment(), OnItemAddedListener {
             binding?.rvContactRecyclerView?.smoothScrollToPosition(0)
         }
 
+        binding?.ivContactSearch?.setOnClickListener {
+            adapter.search(binding?.etContactSearch?.text.toString())
+        }
+
         return binding?.root
 
     }
@@ -218,11 +97,11 @@ class ContactFragment : Fragment(), OnItemAddedListener {
         _binding = null
     }
 
-    override fun onItemAdded(item: UserItems) {
+    override fun onItemAdded(item: UserInfo) {
         addItem(item)
     }
 
-    private fun addItem(item: UserItems) {
+    private fun addItem(item: UserInfo) {
         val adapter = recyclerView.adapter as UserAdapter
         adapter.addContact(item)
         adapter.notifyItemInserted(adapter.itemCount - 1)

@@ -117,15 +117,7 @@ class DialogAddItemFragment : DialogFragment() {
 
         if (name.isNotEmpty() && call.isNotEmpty() && email.isNotEmpty()) {
             val item =
-                UserItems.UserInfo(
-                    R.drawable.img_default_profile,
-                    name,
-                    call,
-                    email,
-                    "",
-                    false,
-                    uri
-                )
+                UserInfo(R.drawable.img_default_profile, name, call, email, "", false, uri)
             val parentFragment = parentFragment
             if (parentFragment is OnItemAddedListener) {
                 parentFragment.onItemAdded(item)
