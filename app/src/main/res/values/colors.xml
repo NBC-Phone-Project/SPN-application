@@ -11,8 +11,8 @@
     <color name="level2">#91A8ED</color>
     <color name="level3">#7394F7</color>
     <color name="level4">#4473FF</color>
-    <color name="stroke_grey">#555555</color>
     <color name="fill">#F2F2F2</color>
     <color name="gray_stroke">#E6E6E6</color>
     <color name="light_grey">#F0F0F0</color>
+    <color name="stroke_grey">#555555</color>
 </resources>
