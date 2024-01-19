@@ -13,22 +13,6 @@ class EditMyPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.run {
-            icMypageBack.setOnClickListener {
-                val myPhoneNumber = binding.etMyPhoneNumber.text.toString()
-                val myEmail = binding.etMyEmail.text.toString()
-                val myMemo = binding.etMyMemo.text.toString()
-                val data = MyPageFragment.newInstance(myPhoneNumber,myEmail,myMemo)
-                setFragment(data)
-            }
-        }
     }
 
-    private fun setFragment(frag : Fragment) {
-        supportFragmentManager.commit {
-            replace(R.id.vp_viewpager_main, frag)
-            setReorderingAllowed(true)
-            addToBackStack("")
-        }
-    }
 }
