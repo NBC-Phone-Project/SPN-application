@@ -27,17 +27,17 @@ class EditMyPageActivity : AppCompatActivity() {
             val memo = binding.etMyMemo.text.toString()
 
 
-            Log.d("jblee", "imageUri = ${imageUri}")
-            Log.d("jblee", "name = ${name}")
-            Log.d("jblee", "tel = ${tel}")
-            Log.d("jblee", "email = ${email}")
-            Log.d("jblee", "memo = ${memo}")
+            Log.d("onCreate", "imageUri = ${imageUri}")
+            Log.d("onCreate", "name = ${name}")
+            Log.d("onCreate", "tel = ${tel}")
+            Log.d("onCreate", "email = ${email}")
+            Log.d("onCreate", "memo = ${memo}")
 
 
 
             val newMyInfo = MyInfo(uriToString(imageUri!!), name, tel, email, memo)
             Utils.savePrefUser(this, newMyInfo)
-            Log.d("jblee", "myInfo = $newMyInfo")
+            Log.d("onCreate", "myInfo = $newMyInfo")
             finish()
         }
 

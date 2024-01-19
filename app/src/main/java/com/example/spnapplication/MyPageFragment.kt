@@ -53,11 +53,11 @@ class MyPageFragment : Fragment() {
 
         val myInfo = Utils.getPrefUser(requireContext())
 
-        Log.d("jblee", "uri = ${myInfo?.userImage.toString()}")
-        Log.d("jblee", "name = ${myInfo?.userName.toString()}")
-        Log.d("jblee", "tel = ${myInfo?.userNumber.toString()}")
-        Log.d("jblee", "email = ${myInfo?.userEmail.toString()}")
-        Log.d("jblee", "memo = ${myInfo?.userMemo.toString()}")
+        Log.d("onResume", "uri = ${myInfo?.userImage.toString()}")
+        Log.d("onResume", "name = ${myInfo?.userName.toString()}")
+        Log.d("onResume", "tel = ${myInfo?.userNumber.toString()}")
+        Log.d("onResume", "email = ${myInfo?.userEmail.toString()}")
+        Log.d("onResume", "memo = ${myInfo?.userMemo.toString()}")
 
         if (myInfo != null) {
             try {
