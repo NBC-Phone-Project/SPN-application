@@ -2,6 +2,7 @@ package com.example.spnapplication
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import java.time.LocalDateTime
 
 @Parcelize
 data class UserInfo(
@@ -10,5 +11,6 @@ data class UserInfo(
     val userNumber: String,
     val userEmail: String,
     val userMemo: String,
-    var isLike : Boolean
+    var isLike: Boolean,
+    val mutableListOf: MutableList<LocalDateTime> = mutableListOf()
 ) : Parcelable
