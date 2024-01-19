@@ -32,6 +32,7 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
     inner class UserViewHolder(binding: FragmentContactItemRecyclerviewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val userImage = binding.ivContactUserIcon
+        val userImageUri = binding.ivContactUserIcon
         val userName = binding.tvContactUsername
         val btnCall = binding.ivContactCall
     }
@@ -62,6 +63,7 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
 //            }
         (holder as UserViewHolder).userName.text = item.userName
         holder.userImage.setImageResource(item.userImage)
+        holder.userImageUri.setImageURI(item.profileImage)
         holder.btnCall.setOnClickListener {
             itemClick?.onClick(it, position)
         }
@@ -74,6 +76,7 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
     override fun getItemCount(): Int {
         return mItems.size
     }
+
 
     fun addContact(contact: UserInfo) {
         mItems.add(contact)
