@@ -17,7 +17,12 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
         fun onClick(view: View, position: Int)
     }
 
+    interface GoToDetail {
+        fun onGoToDetail(view: View, position: Int)
+    }
+
     var itemClick: ItemClick? = null
+    var goToDetail: GoToDetail? = null
 
 //    companion object {
 //        private const val VIEW_TYPE_TITLE = 1
@@ -35,6 +40,7 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
         val userImageUri = binding.ivContactUserIcon
         val userName = binding.tvContactUsername
         val btnCall = binding.ivContactCall
+        val btnGoDetail = binding.clContactGoToDetailBtn
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -66,6 +72,9 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
         holder.userImageUri.setImageURI(item.profileImage)
         holder.btnCall.setOnClickListener {
             itemClick?.onClick(it, position)
+        }
+        holder.btnGoDetail.setOnClickListener {
+            goToDetail?.onGoToDetail(it, position)
         }
     }
 
