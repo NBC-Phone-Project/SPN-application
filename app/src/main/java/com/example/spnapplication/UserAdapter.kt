@@ -11,8 +11,8 @@ import com.example.spnapplication.databinding.FragmentContactItemTitleBinding
 
 class UserAdapter(val mItems: MutableList<UserItems>) : RecyclerView.Adapter<ViewHolder>() {
 
-    interface ItemClick{
-        fun onClick(view: View, position: Int )
+    interface ItemClick {
+        fun onClick(view: View, position: Int)
     }
 
     var itemClick: ItemClick? = null
@@ -30,6 +30,7 @@ class UserAdapter(val mItems: MutableList<UserItems>) : RecyclerView.Adapter<Vie
     inner class UserViewHolder(binding: FragmentContactItemRecyclerviewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val userImage = binding.ivContactUserIcon
+        val userImageUri = binding.ivContactUserIcon
         val userName = binding.tvContactUsername
         val btnCall = binding.ivContactCall
     }
@@ -66,6 +67,7 @@ class UserAdapter(val mItems: MutableList<UserItems>) : RecyclerView.Adapter<Vie
             is UserItems.UserInfo -> {
                 (holder as UserViewHolder).userName.text = item.aUserName
                 holder.userImage.setImageResource(item.aUserImage)
+                holder.userImageUri.setImageURI(item.aprofileImage)
                 holder.btnCall.setOnClickListener {
                     itemClick?.onClick(it, position)
                 }
@@ -80,6 +82,7 @@ class UserAdapter(val mItems: MutableList<UserItems>) : RecyclerView.Adapter<Vie
     override fun getItemCount(): Int {
         return mItems.size
     }
+
     fun addContact(contact: UserItems) {
         mItems.add(contact)
     }

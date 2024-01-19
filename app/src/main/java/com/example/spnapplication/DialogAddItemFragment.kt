@@ -1,20 +1,33 @@
 package com.example.spnapplication
 
+import android.app.Activity.RESULT_OK
 import android.app.Dialog
+import android.content.ContentValues.TAG
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.DialogFragment
+import com.bumptech.glide.Glide
 import com.example.spnapplication.databinding.FragmentDialogAddItemBinding
 
 
 class DialogAddItemFragment : DialogFragment() {
     private lateinit var binding: FragmentDialogAddItemBinding
+    private var profileImageUri: Uri? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = Dialog(requireContext())
@@ -29,6 +42,7 @@ class DialogAddItemFragment : DialogFragment() {
         binding.btnCancelDialog.setOnClickListener {
             dismiss()
         }
+
         val dialogName = binding.nameDialogLayout
         val dialogCall = binding.callDialogLayout
         val dialogEmail = binding.emailDialogLayout
@@ -86,6 +100,12 @@ class DialogAddItemFragment : DialogFragment() {
             }
         })
 
+        binding.btnUserInfoChangeProfile.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            activityResult.launch(intent)
+        }
+
         return dialog
     }
 
@@ -93,17 +113,39 @@ class DialogAddItemFragment : DialogFragment() {
         val name = binding.etNameDialog.text.toString()
         val call = binding.etCallDialog.text.toString()
         val email = binding.etEmailDialog.text.toString()
+        val uri = profileImageUri
 
         if (name.isNotEmpty() && call.isNotEmpty() && email.isNotEmpty()) {
             val item =
-                UserItems.UserInfo(R.drawable.img_default_profile, name, call, email, "", false)
+                UserItems.UserInfo(
+                    R.drawable.img_default_profile,
+                    name,
+                    call,
+                    email,
+                    "",
+                    false,
+                    uri
+                )
             val parentFragment = parentFragment
             if (parentFragment is OnItemAddedListener) {
                 parentFragment.onItemAdded(item)
             }
             dismiss()
         }
+
+
     }
+
+    private val activityResult: ActivityResultLauncher<Intent> =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK && it.data != null) {
+                profileImageUri = it.data!!.data
+
+                Glide.with(this)
+                    .load(profileImageUri)
+                    .into(binding.imgAddDialog)
+            }
+        }
 }
 
 private fun NameCondition(name: String): Boolean {
