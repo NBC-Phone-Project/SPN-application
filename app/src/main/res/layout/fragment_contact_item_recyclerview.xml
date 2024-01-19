@@ -6,7 +6,7 @@
     android:orientation="horizontal">
 
     <FrameLayout
-        android:layout_width="350dp"
+        android:layout_width="345dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -30,7 +30,8 @@
                 android:layout_weight="3"
                 android:background="@color/red"
                 android:gravity="center"
-                android:text="삭제"
+                android:textStyle="bold"
+                android:text="@string/contact_item_recyclerview_delete"
                 android:textColor="@color/white" />
 
         </LinearLayout>
@@ -38,7 +39,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_contact_goToDetailBtn"
-            android:layout_width="335dp"
+            android:layout_width="330dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
             android:background="@color/white"
