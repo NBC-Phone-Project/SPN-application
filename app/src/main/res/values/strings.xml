@@ -35,6 +35,7 @@
 
     <!-- fragment_edit_my_page.xml -->
     <string name="edit_mypage_btn">저장</string>
+    <string name="edit_mypage_name">이름</string>
 
     <!-- activity_add_contact.xml -->
     <string name="add_contact_name">이름</string>
