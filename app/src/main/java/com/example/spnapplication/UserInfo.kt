@@ -12,3 +12,13 @@ data class UserInfo(
     val userMemo: String,
     var isLike : Boolean
 ) : Parcelable
+
+@Parcelize
+data class MyInfo(
+    val userImage: String?,
+    val userName: String,
+    val userNumber: String,
+    val userEmail: String,
+    val userMemo: String,
+) : Parcelable
+
