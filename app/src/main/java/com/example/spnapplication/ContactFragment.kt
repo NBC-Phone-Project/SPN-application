@@ -10,6 +10,7 @@ import android.view.animation.AlphaAnimation
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spnapplication.databinding.FragmentContactBinding
@@ -42,6 +43,12 @@ class ContactFragment : Fragment(), OnItemAddedListener {
         binding?.rvContactRecyclerView?.adapter = adapter
         binding?.rvContactRecyclerView?.layoutManager = LinearLayoutManager(requireContext())
 
+        val swipeHelperCallback = SwipeHelperCallback(adapter).apply {
+            // 스와이프한 뒤 고정시킬 위치 지정
+            setClamp(resources.displayMetrics.widthPixels.toFloat() / 4)    // 1080 / 4 = 270
+        }
+        ItemTouchHelper(swipeHelperCallback).attachToRecyclerView(binding?.rvContactRecyclerView)
+
         //상품 사이에 회색 줄 추가
         val decoration = DividerItemDecoration(context, LinearLayout.VERTICAL)
         binding?.rvContactRecyclerView?.addItemDecoration(decoration)
@@ -54,7 +61,7 @@ class ContactFragment : Fragment(), OnItemAddedListener {
 //        })
 
         // 통화 아이콘 클릭 시 CALL 액션 및 Intent로 전화번호 데이터 전달
-        adapter.itemClick = object : UserAdapter.ItemClick{
+        adapter.itemClick = object : UserAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
                 // 선택된 유저
                 val selectedUser = userList[position] as UserInfo

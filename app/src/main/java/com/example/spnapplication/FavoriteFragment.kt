@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spnapplication.databinding.FragmentContactBinding
@@ -39,6 +40,12 @@ class FavoriteFragment : Fragment() {
         val adapter = UserAdapter(userList)
         binding?.rvContactRecyclerView?.adapter = adapter
         binding?.rvContactRecyclerView?.layoutManager = LinearLayoutManager(requireContext())
+
+        val swipeHelperCallback = SwipeHelperCallback(adapter).apply {
+            // 스와이프한 뒤 고정시킬 위치 지정
+            setClamp(resources.displayMetrics.widthPixels.toFloat() / 4)    // 1080 / 4 = 270
+        }
+        ItemTouchHelper(swipeHelperCallback).attachToRecyclerView(binding?.rvContactRecyclerView)
 
         //상품 사이에 회색 줄 추가
         val decoration = DividerItemDecoration(context, LinearLayout.VERTICAL)

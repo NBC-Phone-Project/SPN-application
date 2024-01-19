@@ -4,10 +4,12 @@ import android.content.ClipData.Item
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.spnapplication.databinding.FragmentContactItemRecyclerviewBinding
 import com.example.spnapplication.databinding.FragmentContactItemTitleBinding
+import java.util.Collections
 
 class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<ViewHolder>() {
 
@@ -35,7 +37,10 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
         val userImageUri = binding.ivContactUserIcon
         val userName = binding.tvContactUsername
         val btnCall = binding.ivContactCall
+        val remove = binding.tvRemove
+
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -48,11 +53,14 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
 //                )
 //                TitleViewHolder(binding)
 //            }
+
         val binding = FragmentContactItemRecyclerviewBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
+
         )
+
         return UserViewHolder(binding)
     }
 
@@ -67,6 +75,21 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
         holder.btnCall.setOnClickListener {
             itemClick?.onClick(it, position)
         }
+        // 삭제 텍스트뷰 클릭시 토스트 표시
+        holder.remove.setOnClickListener {
+            removeData(position)
+        }
+    }
+
+
+    fun removeData(position: Int) {
+        mItems.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
+    fun swapData(fromPos: Int, toPos: Int) {
+        Collections.swap(mItems, fromPos, toPos)
+        notifyItemMoved(fromPos, toPos)
     }
 
     override fun getItemId(position: Int): Long {
