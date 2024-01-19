@@ -19,7 +19,12 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
         fun onClick(view: View, position: Int)
     }
 
+    interface GoToDetail {
+        fun onGoToDetail(view: View, position: Int)
+    }
+
     var itemClick: ItemClick? = null
+    var goToDetail: GoToDetail? = null
 
 //    companion object {
 //        private const val VIEW_TYPE_TITLE = 1
@@ -38,7 +43,7 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
         val userName = binding.tvContactUsername
         val btnCall = binding.ivContactCall
         val remove = binding.tvRemove
-
+        val btnGoDetail = binding.clContactGoToDetailBtn
     }
 
 
@@ -90,6 +95,11 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
     fun swapData(fromPos: Int, toPos: Int) {
         Collections.swap(mItems, fromPos, toPos)
         notifyItemMoved(fromPos, toPos)
+        
+        holder.btnGoDetail.setOnClickListener {
+            goToDetail?.onGoToDetail(it, position)
+        }
+        
     }
 
     override fun getItemId(position: Int): Long {
