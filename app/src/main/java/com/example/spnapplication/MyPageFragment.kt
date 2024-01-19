@@ -12,7 +12,8 @@ import com.example.spnapplication.databinding.FragmentMyPageBinding
 
 
 class MyPageFragment : Fragment() {
-    private val binding by lazy { FragmentMyPageBinding.inflate(layoutInflater) }
+    private var _binding: FragmentMyPageBinding? = null
+    private val binding get() = _binding!!
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,16 +26,23 @@ class MyPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        binding.icEdit.setOnClickListener {
+            activity?.let{
+                val intent = Intent(context, EditMyPageActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_page, container, false)
+        _binding = FragmentMyPageBinding.inflate(inflater, container, false)
+        return binding.root
     }
+
+
 
     companion object {
 
