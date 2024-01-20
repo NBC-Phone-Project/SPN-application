@@ -6,9 +6,11 @@
     android:layout_height="wrap_content"
     android:paddingStart="20dp"
     android:paddingVertical="4dp"
+    android:background="@color/white"
     tools:ignore="RtlSymmetry">
 
     <TextView
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/recent_records_sticky_header_date"

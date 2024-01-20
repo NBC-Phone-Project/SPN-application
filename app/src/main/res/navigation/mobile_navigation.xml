@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.spnapplication.RecentRecordsFragment"
+        android:name="com.example.spnapplication.recentRecords.RecentRecordsFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_recentrecords" />
+        tools:layout="@layout/fragment_recent_records" />
 </navigation>
