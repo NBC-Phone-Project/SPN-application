@@ -10,6 +10,7 @@ import android.view.animation.AlphaAnimation
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -40,8 +41,19 @@ class ContactFragment : Fragment(), OnItemAddedListener {
 
 
         val adapter = UserAdapter(userList)
+        val lLayoutManager = LinearLayoutManager(context)
         binding?.rvContactRecyclerView?.adapter = adapter
-        binding?.rvContactRecyclerView?.layoutManager = LinearLayoutManager(requireContext())
+        binding?.rvContactRecyclerView?.layoutManager = lLayoutManager
+
+
+        // 리스트 뷰 아이콘 클릭 시 리스트 뷰 <-> 그리드 뷰 전환
+        binding?.ibMainViewChange?.setOnClickListener {
+            if (binding?.rvContactRecyclerView?.layoutManager == lLayoutManager){
+                binding?.rvContactRecyclerView?.layoutManager = GridLayoutManager(context,2)
+            } else {
+                binding?.rvContactRecyclerView?.layoutManager = lLayoutManager
+            }
+        }
 
         val swipeHelperCallback = SwipeHelperCallback(adapter).apply {
             // 스와이프한 뒤 고정시킬 위치 지정

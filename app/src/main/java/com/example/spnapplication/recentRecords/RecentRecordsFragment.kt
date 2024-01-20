@@ -50,7 +50,7 @@ class RecentRecordsFragment : Fragment() {
         val callGroups = CallGroups(mutableListOf())
 
         Const.DummyData.forEach { userData ->
-            userData.recentCallTimes.forEach { recentCallTime ->
+            userData.mutableListOf.forEach { recentCallTime ->
                 val foundGroup =
                     callGroups.callGroups.find { it.time.isSameYearMonthDay(recentCallTime) }
 

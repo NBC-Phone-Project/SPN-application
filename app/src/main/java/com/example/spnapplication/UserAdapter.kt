@@ -84,6 +84,9 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
         holder.remove.setOnClickListener {
             removeData(position)
         }
+        holder.btnGoDetail.setOnClickListener {
+            goToDetail?.onGoToDetail(it, position)
+        }
     }
 
 
@@ -95,11 +98,6 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
     fun swapData(fromPos: Int, toPos: Int) {
         Collections.swap(mItems, fromPos, toPos)
         notifyItemMoved(fromPos, toPos)
-        
-        holder.btnGoDetail.setOnClickListener {
-            goToDetail?.onGoToDetail(it, position)
-        }
-        
     }
 
     override fun getItemId(position: Int): Long {
