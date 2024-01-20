@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.spnapplication.recentRecords.RecentRecordsFragment
 import com.example.spnapplication.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
