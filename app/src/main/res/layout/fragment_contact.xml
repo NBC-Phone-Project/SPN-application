@@ -12,8 +12,8 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:backgroundTint="@color/white"
-            android:layout_height="200dp">
+            android:layout_height="200dp"
+            android:backgroundTint="@color/white">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
@@ -25,8 +25,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/contact_appIcon"
                     android:layout_marginTop="32dp"
+                    android:text="@string/contact_appIcon"
                     android:textSize="32sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/guideline"
