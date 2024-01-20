@@ -45,8 +45,8 @@ class MainActivity : AppCompatActivity() {
             Log.e("jblee", "ViewPager position: ${position}")
             when (position) {
                 0 -> tab.text = "연락처"
-                1 -> tab.text = "즐겨찾기"
-                2 -> tab.text = "최근기록"
+                1 -> tab.text = "최근기록"
+                2 -> tab.text = "즐겨찾기"
                 3 -> tab.text = "내정보"
             }
             when (position) {

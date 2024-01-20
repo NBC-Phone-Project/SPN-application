@@ -10,7 +10,7 @@ object Const {
             "010-1234-5678",
             "CSKim@naver.com",
             "메모 내용입니다.",
-            false,
+            true,
             null,
             mutableListOf(
                 LocalDateTime.of(2024, 1, 19, 12, 0, 0),
@@ -24,7 +24,7 @@ object Const {
             "010-2345-6789",
             "LYH@gmail.com",
             "오늘은 날씨가 좋네요.",
-            false,
+            true,
             null,
             mutableListOf(
                 LocalDateTime.of(2024, 1, 20, 12, 0, 0),

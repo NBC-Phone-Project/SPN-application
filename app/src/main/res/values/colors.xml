@@ -15,4 +15,5 @@
     <color name="gray_stroke">#E6E6E6</color>
     <color name="light_grey">#F0F0F0</color>
     <color name="stroke_grey">#555555</color>
+    <color name="red">#FF0000</color>
 </resources>
