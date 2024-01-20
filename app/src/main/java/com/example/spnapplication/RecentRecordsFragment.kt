@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.spnapplication.databinding.FragmentRecentrecordsBinding
+import com.example.spnapplication.databinding.FragmentRecentRecordsBinding
 
 class RecentRecordsFragment : Fragment() {
 
-    private var _binding: FragmentRecentrecordsBinding? = null
+    private var _binding: FragmentRecentRecordsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -21,7 +21,7 @@ class RecentRecordsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentRecentrecordsBinding.inflate(inflater, container, false)
+        _binding = FragmentRecentRecordsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         return root
