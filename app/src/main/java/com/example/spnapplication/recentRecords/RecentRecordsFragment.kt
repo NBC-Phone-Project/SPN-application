@@ -1,0 +1,111 @@
+package com.example.spnapplication.recentRecords
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.spnapplication.Const
+import com.example.spnapplication.util.Util.formatToYMD
+import com.example.spnapplication.databinding.FragmentRecentRecordsBinding
+import com.example.spnapplication.ui.HeaderItemDecoration
+import java.time.LocalDateTime
+
+class RecentRecordsFragment : Fragment() {
+
+    private var fragmentBinding: FragmentRecentRecordsBinding? = null
+    private val binding get() = fragmentBinding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        fragmentBinding = FragmentRecentRecordsBinding.inflate(inflater, container, false)
+        val rootView: View = binding.root
+
+        initializeViews()
+
+        return rootView
+    }
+
+    private fun initializeViews() {
+        // RecyclerView
+        val callGroups = convertUserDataToCallGroups()
+
+        binding.rvRecentRecords.adapter = CallAdapter(callGroups)
+        binding.rvRecentRecords.layoutManager = LinearLayoutManager(context)
+
+        binding.rvRecentRecords.addItemDecoration(HeaderItemDecoration(binding.rvRecentRecords) { itemPosition: Int -> callGroups[itemPosition] is RecentCalls.CallHeader })
+        binding.rvRecentRecords.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                LinearLayout.VERTICAL
+            )
+        )
+    }
+
+    private fun convertUserDataToCallGroups(): MutableList<RecentCalls> {
+        val callGroups = CallGroups(mutableListOf())
+
+        Const.DummyData.forEach { userData ->
+            userData.recentCallTimes.forEach { recentCallTime ->
+                val foundGroup =
+                    callGroups.callGroups.find { it.time.isSameYearMonthDay(recentCallTime) }
+
+                if (foundGroup != null) {
+                    foundGroup.calls.add(
+                        RecentCalls.CallItem(
+                            userData.userName, userData.userNumber, recentCallTime
+                        )
+                    )
+                } else {
+                    val newCallGroup = CallGroup(
+                        recentCallTime, mutableListOf(
+                            RecentCalls.CallItem(
+                                userData.userName, userData.userNumber, recentCallTime
+                            )
+                        )
+                    )
+                    callGroups.callGroups.add(newCallGroup)
+                }
+            }
+        }
+
+        return callGroups.sortAndCopy()
+    }
+
+    private fun CallGroups.sortAndCopy(): MutableList<RecentCalls> {
+        val sortedCallGroups = callGroups.sortedByDescending { it.time }
+            .map { callGroup ->
+                val sortedCalls = callGroup.calls.sortedByDescending { it.time }
+                CallGroup(callGroup.time, sortedCalls.toMutableList())
+            }
+            .toMutableList()
+
+        return convertToMutableList(CallGroups(sortedCallGroups))
+    }
+
+    private fun convertToMutableList(callGroups: CallGroups): MutableList<RecentCalls> {
+        val resultList: MutableList<RecentCalls> = mutableListOf()
+
+        for (callGroup in callGroups.callGroups) {
+            resultList.add(RecentCalls.CallHeader(callGroup.time.formatToYMD()))
+            resultList.addAll(callGroup.calls.map { call ->
+                RecentCalls.CallItem(call.name, call.phoneNumber, call.time)
+            })
+        }
+
+        return resultList
+    }
+
+    private fun LocalDateTime.isSameYearMonthDay(dateTime: LocalDateTime): Boolean {
+        return this.toLocalDate().compareTo(dateTime.toLocalDate()) == 0
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        fragmentBinding = null
+    }
+}
