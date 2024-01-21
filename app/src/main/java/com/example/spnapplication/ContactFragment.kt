@@ -145,5 +145,10 @@ class ContactFragment : Fragment(), OnItemAddedListener {
         adapter.addContact(item)
         adapter.notifyItemInserted(adapter.itemCount - 1)
     }
+
+    override fun onResume() {
+        super.onResume()
+        binding?.rvContactRecyclerView?.adapter?.notifyDataSetChanged()
+    }
 }
 
