@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 object DummyUserInfo {
     val DummyData: MutableList<UserInfo> = mutableListOf(
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "김철수",
             "010-1234-5678",
             "CSKim@naver.com",
@@ -21,7 +21,7 @@ object DummyUserInfo {
             )
         ),
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "이영희",
             "010-2345-6789",
             "LYH@gmail.com",
@@ -34,7 +34,7 @@ object DummyUserInfo {
             )
         ),
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "박민수",
             "010-3456-7890",
             "PMShin@daum.net",
@@ -47,7 +47,7 @@ object DummyUserInfo {
             )
         ),
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "최은지",
             "010-4567-8901",
             "CEChoi@nate.com",
@@ -61,7 +61,7 @@ object DummyUserInfo {
             )
         ),
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "강민구",
             "010-5678-9012",
             "KMKang@hanmail.net",
@@ -73,7 +73,7 @@ object DummyUserInfo {
             )
         ),
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "조수현",
             "010-6789-0123",
             "JSH@nate.com",
@@ -85,7 +85,7 @@ object DummyUserInfo {
             )
         ),
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "박지민",
             "010-7890-1234",
             "PMPark@gmail.com",
@@ -99,7 +99,7 @@ object DummyUserInfo {
             )
         ),
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "이서연",
             "010-8901-2345",
             "LSY@naver.com",
@@ -112,7 +112,7 @@ object DummyUserInfo {
             )
         ),
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "정민규",
             "010-9012-3456",
             "JMJeong@daum.net",
@@ -126,7 +126,7 @@ object DummyUserInfo {
             )
         ),
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "강지혜",
             "010-0123-4567",
             "KJH@nate.com",
@@ -140,7 +140,7 @@ object DummyUserInfo {
             )
         ),
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "조영수",
             "010-1234-5678",
             "JYS@gmail.com",
@@ -154,7 +154,7 @@ object DummyUserInfo {
             )
         ),
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "윤아라",
             "010-2345-6789",
             "YAYun@naver.com",
@@ -168,7 +168,7 @@ object DummyUserInfo {
             )
         ),
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "김지수",
             "010-3456-7890",
             "KSKim@daum.net",
@@ -182,7 +182,7 @@ object DummyUserInfo {
             )
         ),
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "이민지",
             "010-4567-8901",
             "IMiin@nate.com",
@@ -195,7 +195,7 @@ object DummyUserInfo {
             )
         ),
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "박수현",
             "010-5678-9012",
             "PSPark@gmail.com",
@@ -207,7 +207,7 @@ object DummyUserInfo {
             )
         ),
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "최민수",
             "010-6789-0123",
             "CMChoi@naver.com",
@@ -218,7 +218,7 @@ object DummyUserInfo {
             )
         ),
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "강민경",
             "010-7890-1234",
             "KMKang@daum.net",
@@ -232,7 +232,7 @@ object DummyUserInfo {
             )
         ),
         UserInfo(
-            R.drawable.iv_mypage_myprofile,
+            R.drawable.img_default_profile,
             "조수연",
             "010-8901-2345",
             "JSH@nate.com",

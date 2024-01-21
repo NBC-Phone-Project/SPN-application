@@ -79,8 +79,7 @@ class MyPageFragment : Fragment() {
         }else{
             val ad = AlertDialog.Builder(requireContext())
             ad.setIcon(R.drawable.iv_mypage_myprofile)
-            ad.setTitle("처음이네요")
-            ad.setMessage("처음이면 프로필 등록해")
+            ad.setMessage("프로필을 등록해 주세요.")
 
             ad.setPositiveButton("확인") { dialog, _ ->
                 val intent = Intent(context, EditMyPageActivity::class.java)
