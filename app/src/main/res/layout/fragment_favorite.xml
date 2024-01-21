@@ -28,11 +28,11 @@
         app:layout_constraintStart_toEndOf="@id/iv_contact_search"
         app:layout_constraintTop_toTopOf="@+id/iv_contact_search" />
 
-    <TextView
+    <ImageView
         android:id="@+id/tv_contact_appIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/contact_appIcon"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:src="@drawable/ic_logo_level1"
         android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
