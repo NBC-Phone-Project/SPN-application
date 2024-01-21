@@ -7,11 +7,11 @@ import java.time.LocalDateTime
 
 @Parcelize
 data class UserInfo(
-    val userImage: Int,
-    val userName: String,
-    val userNumber: String,
-    val userEmail: String,
-    val userMemo: String,
+    val image: Int,
+    val name: String,
+    val phoneNumber: String,
+    val email: String,
+    val memo: String,
     var isLike: Boolean,
     var profileImage: Uri? = null,
     val mutableListOf: MutableList<LocalDateTime> = mutableListOf()

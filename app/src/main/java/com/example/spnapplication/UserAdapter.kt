@@ -1,10 +1,8 @@
 package com.example.spnapplication
 
-import android.content.ClipData.Item
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.spnapplication.databinding.FragmentContactItemRecyclerviewBinding
@@ -74,8 +72,8 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
 //            is UserItems.UserTitle -> {
 //                (holder as TitleViewHolder).title.text = "${item.aTitle}"
 //            }
-        (holder as UserViewHolder).userName.text = item.userName
-        holder.userImage.setImageResource(item.userImage)
+        (holder as UserViewHolder).userName.text = item.name
+        holder.userImage.setImageResource(item.image)
         holder.userImageUri.setImageURI(item.profileImage)
         holder.btnCall.setOnClickListener {
             itemClick?.onClick(it, position)
@@ -123,7 +121,7 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
 //    }
 
     fun sortList() {
-        mItems.sortBy { it.userName }
+        mItems.sortBy { it.name }
     }
 
     fun search(first: String) {
@@ -133,7 +131,7 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
             mItems.clear()
             mItems.addAll(mItemsCopyList)
         } else {
-            val filteredList = mItems.filter { it.userName.contains(name) }
+            val filteredList = mItems.filter { it.name.contains(name) }
             mItems.clear()
             mItems.addAll(filteredList)
         }

@@ -8,13 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.spnapplication.databinding.FragmentContactBinding
 import com.example.spnapplication.databinding.FragmentFavoriteBinding
 
 class FavoriteFragment : Fragment() {
@@ -58,7 +56,7 @@ class FavoriteFragment : Fragment() {
                 val selectedUser = userList[position] as UserInfo
                 // Intent로 전화걸기
                 val intent = Intent(Intent.ACTION_DIAL)
-                intent.data = Uri.parse("tel:${selectedUser.userNumber}")
+                intent.data = Uri.parse("tel:${selectedUser.phoneNumber}")
                 startActivity(intent)
             }
         }
