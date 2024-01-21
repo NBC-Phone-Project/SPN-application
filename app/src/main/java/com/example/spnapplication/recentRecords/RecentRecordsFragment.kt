@@ -57,14 +57,14 @@ class RecentRecordsFragment : Fragment() {
                 if (foundGroup != null) {
                     foundGroup.calls.add(
                         RecentCalls.CallItem(
-                            userData.userName, userData.userNumber, recentCallTime
+                            userData.name, userData.phoneNumber, recentCallTime
                         )
                     )
                 } else {
                     val newCallGroup = CallGroup(
                         recentCallTime, mutableListOf(
                             RecentCalls.CallItem(
-                                userData.userName, userData.userNumber, recentCallTime
+                                userData.name, userData.phoneNumber, recentCallTime
                             )
                         )
                     )

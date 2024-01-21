@@ -80,7 +80,7 @@ class ContactFragment : Fragment(), OnItemAddedListener {
                 val selectedUser = userList[position] as UserInfo
                 // Intent로 전화걸기
                 val intent = Intent(Intent.ACTION_DIAL)
-                intent.data = Uri.parse("tel:${selectedUser.userNumber}")
+                intent.data = Uri.parse("tel:${selectedUser.phoneNumber}")
                 startActivity(intent)
             }
         }
