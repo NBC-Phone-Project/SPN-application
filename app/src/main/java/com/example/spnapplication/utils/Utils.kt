@@ -5,6 +5,8 @@ import android.content.Context
 import com.example.spnapplication.MyInfo
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 object Utils {
 
@@ -28,5 +30,18 @@ object Utils {
         } catch (e: JsonSyntaxException) {
             null
         }
+    }
+
+    private const val YMD_FORMAT = "yyyy년 MM월 dd일"
+    private const val HM_FORMAT = "a HH:mm"
+
+    fun LocalDateTime.formatToYMD(): String {
+        val formatter = DateTimeFormatter.ofPattern(YMD_FORMAT)
+        return this.format(formatter)
+    }
+
+    fun LocalDateTime.formatToHM(): String {
+        val formatter = DateTimeFormatter.ofPattern(HM_FORMAT)
+        return this.format(formatter)
     }
 }

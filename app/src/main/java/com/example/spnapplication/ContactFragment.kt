@@ -14,8 +14,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.spnapplication.const.DummyUserInfo
+import com.example.spnapplication.const.IntentKeys.USER_INFO
 import com.example.spnapplication.databinding.FragmentContactBinding
-import java.time.LocalDateTime
 
 class ContactFragment : Fragment(), OnItemAddedListener {
 
@@ -32,7 +33,7 @@ class ContactFragment : Fragment(), OnItemAddedListener {
         recyclerView = binding!!.rvContactRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        val userList = Const.DummyData
+        val userList = DummyUserInfo.DummyData
 
         binding?.ibContactGoToAddContact?.setOnClickListener {
             val dialogFragment = DialogAddItemFragment()
@@ -91,7 +92,7 @@ class ContactFragment : Fragment(), OnItemAddedListener {
                 val chooseUser = userList[position]
                 // Intent로 화면 전환, li 데이터전달
                 val intent = Intent(activity, ContactDetailActivity::class.java)
-                intent.putExtra("UserInfo", chooseUser)
+                intent.putExtra(USER_INFO, chooseUser)
                 activity?.startActivity(intent)
             }
         }

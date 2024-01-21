@@ -8,13 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.spnapplication.databinding.FragmentContactBinding
+import com.example.spnapplication.const.DummyUserInfo
 import com.example.spnapplication.databinding.FragmentFavoriteBinding
 
 class FavoriteFragment : Fragment() {
@@ -35,7 +34,7 @@ class FavoriteFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         /* filter 함수로 DummyData의 isLike가 True이면 True인 데이터만 출력 */
-        val userList = Const.DummyData.filter { it.isLike }.toMutableList()
+        val userList = DummyUserInfo.DummyData.filter { it.isLike }.toMutableList()
 
         val adapter = UserAdapter(userList)
         binding?.rvContactRecyclerView?.adapter = adapter
