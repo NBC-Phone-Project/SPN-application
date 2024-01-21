@@ -67,9 +67,9 @@ class ContactDetailActivity : AppCompatActivity() {
 
     private fun initView() {
         with(binding) {
-            tvUsername.text = userInfo?.userName
-            tvNumber.text = userInfo?.userNumber
-            tvEmail.text = userInfo?.userEmail
+            tvUsername.text = userInfo?.name
+            tvNumber.text = userInfo?.phoneNumber
+            tvEmail.text = userInfo?.email
             userInfo?.isLike?.let { updateLikeIcon(it) }
         }
     }

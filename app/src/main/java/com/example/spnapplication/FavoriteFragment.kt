@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.spnapplication.const.DummyUserInfo
 import com.example.spnapplication.databinding.FragmentFavoriteBinding
 
 class FavoriteFragment : Fragment() {
