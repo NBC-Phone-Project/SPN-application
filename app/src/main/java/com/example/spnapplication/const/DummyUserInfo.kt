@@ -245,4 +245,35 @@ object DummyUserInfo {
             )
         ),
     )
+
+
+    private fun findByUserInfo(userInfo: UserInfo) : UserInfo?{
+        return DummyData.find { it == userInfo }
+    }
+
+    fun toggleLikeState(userInfo: UserInfo): Boolean {
+        userInfo.let {
+            it.isLike = !it.isLike
+            return it.isLike
+        }
+    }
+
+    fun removeUserByUserInfo(userInfo: UserInfo) {
+        userInfo.let {
+            DummyData.remove(it)
+        }
+    }
+
+    private fun findItemByNameAndPhoneNumber(name: String, phoneNumber: String): UserInfo? {
+        return DummyData.find { it.userName == name && it.userNumber == phoneNumber }
+    }
+
+    fun removeUserByNameAndPhoneNumber(name: String, phoneNumber: String) {
+        val userToRemove = findItemByNameAndPhoneNumber(name, phoneNumber)
+        userToRemove?.let {
+            DummyData.remove(it)
+        }
+    }
+
+
 }

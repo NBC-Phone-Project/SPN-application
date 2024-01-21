@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spnapplication.const.DummyUserInfo
 import com.example.spnapplication.const.IntentKeys.USER_INFO
+import com.example.spnapplication.contactDetail.ContactDetailActivity
 import com.example.spnapplication.databinding.FragmentContactBinding
 
 class ContactFragment : Fragment(), OnItemAddedListener {
