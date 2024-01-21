@@ -135,7 +135,7 @@ class ContactFragment : Fragment(), OnItemAddedListener {
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 if (it.resultCode == AppCompatActivity.RESULT_OK) {
                     val likePosition = it.data?.getIntExtra("likePosition", 0) as Int
-                    val isLike = it.data?.getBooleanExtra("isLike", false) as Boolean
+                    val isLike = it.data?.getBooleanExtra("isLike", userList[likePosition].isLike) as Boolean
                     if (isLike) {
                         userList[likePosition].isLike = true
                     } else {
