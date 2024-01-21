@@ -65,11 +65,9 @@ class EditMyPageActivity : AppCompatActivity() {
             Log.d("onCreate", "email = ${email}")
             Log.d("onCreate", "memo = ${memo}")
 
-            if (!isRegularEmail()) {
-                isGotoJoin = false
-                Toast.makeText(this@EditMyPageActivity, "이메일 형식으로 입력해주세요.", Toast.LENGTH_SHORT)
-                    .show()
-            } else if (name.isEmpty()) {
+
+
+            if (name.isEmpty()) {
                 isGotoJoin = false
                 Toast.makeText(this@EditMyPageActivity, "공란이 존재합니다.", Toast.LENGTH_SHORT).show()
             } else if (!isRegularName()) {
@@ -79,6 +77,10 @@ class EditMyPageActivity : AppCompatActivity() {
                     "전화번호를 - 포함 13자리를 입력해주세요.",
                     Toast.LENGTH_SHORT
                 ).show()
+            } else if (!isRegularEmail()) {
+                isGotoJoin = false
+                Toast.makeText(this@EditMyPageActivity, "이메일 형식으로 입력해주세요.", Toast.LENGTH_SHORT)
+                    .show()
             }
 
             if (isGotoJoin) {
