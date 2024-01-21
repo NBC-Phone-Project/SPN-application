@@ -1,6 +1,8 @@
 package com.example.spnapplication.recentRecords
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,13 +10,15 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.spnapplication.ContactDetailActivity
+import com.example.spnapplication.UserInfo
 import com.example.spnapplication.const.DummyUserInfo
 import com.example.spnapplication.databinding.FragmentRecentRecordsBinding
 import com.example.spnapplication.ui.HeaderItemDecoration
 import com.example.spnapplication.utils.Utils.formatToYMD
 import java.time.LocalDateTime
 
-class RecentRecordsFragment : Fragment() {
+class RecentRecordsFragment : Fragment(), CallAdapter.ItemClick {
 
     private var fragmentBinding: FragmentRecentRecordsBinding? = null
     private val binding get() = fragmentBinding!!
@@ -34,7 +38,7 @@ class RecentRecordsFragment : Fragment() {
         // RecyclerView
         val callGroups = convertUserDataToCallGroups()
 
-        binding.rvRecentRecords.adapter = CallAdapter(callGroups)
+        binding.rvRecentRecords.adapter = CallAdapter(callGroups).apply { itemClick = this@RecentRecordsFragment }
         binding.rvRecentRecords.layoutManager = LinearLayoutManager(context)
 
         binding.rvRecentRecords.addItemDecoration(HeaderItemDecoration(binding.rvRecentRecords) { itemPosition: Int -> callGroups[itemPosition] is RecentCalls.CallHeader })
@@ -107,5 +111,15 @@ class RecentRecordsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         fragmentBinding = null
+    }
+
+    override fun onClick(callItem: RecentCalls.CallItem) {
+        Log.d("Recent", "click!!")
+        val foundUserInfo = DummyUserInfo.findItemByNameAndPhoneNumber(callItem.name, callItem.phoneNumber)
+        startActivity(
+            Intent(context, ContactDetailActivity::class.java).apply {
+                putExtra("UserInfo", foundUserInfo)
+            }
+        )
     }
 }

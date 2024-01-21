@@ -11,6 +11,12 @@ import com.example.spnapplication.utils.Utils.formatToHM
 class CallAdapter(private val callGroups: MutableList<RecentCalls>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    interface ItemClick {
+        fun onClick(view: RecentCalls.CallItem)
+    }
+
+    var itemClick: ItemClick? = null
+
     companion object {
         private const val VIEW_TYPE_HEADER = 0
         private const val VIEW_TYPE_ITEM = 1
@@ -61,6 +67,10 @@ class CallAdapter(private val callGroups: MutableList<RecentCalls>) :
                 name.text = item.name
                 time.text = item.time.formatToHM()
                 ivCallState.setImageResource(if(item.isCallReceived) R.drawable.ic_recent_records_call_received_24dp else R.drawable.ic_recent_records_call_made_24dp)
+
+                itemView.setOnClickListener {
+                    itemClick?.onClick(item)
+                }
             }
         }
     }
