@@ -2,10 +2,12 @@ package com.example.spnapplication
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.spnapplication.const.DummyUserInfo
+import com.example.spnapplication.const.IntentKeys.SMS_BODY
 import com.example.spnapplication.databinding.ActivityContactDetailBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -23,6 +25,7 @@ class ContactDetailActivity : AppCompatActivity() {
 
         with(binding) {
             //기본이미지, Uri 이미지 출력
+            UserInfoItem?.image?.let { ivUserImage.setImageResource(it) }
             tvUsername.text = UserInfoItem?.name
             tvNumber.text = UserInfoItem?.phoneNumber
             tvEmail.text = UserInfoItem?.email
@@ -68,6 +71,13 @@ class ContactDetailActivity : AppCompatActivity() {
             setResult(RESULT_OK, intent)
             if (!isFinishing) finish()
         }
+
+        binding.tvSendMessage.setOnClickListener {
+            sendMessage()
+        }
+        binding.tvMakeCall.setOnClickListener {
+            makeCall()
+        }
     }
 
     private val UserInfoItem: UserInfo? by lazy {
@@ -76,5 +86,30 @@ class ContactDetailActivity : AppCompatActivity() {
         } else {
             intent.getParcelableExtra<UserInfo>("UserInfo")
         }
+    }
+
+    private fun makeCall() {
+        // 전화 걸 대상의 전화번호
+        val phoneNumber = UserInfoItem?.phoneNumber
+
+        // 전화 걸기 Intent 생성
+        val intent = Intent(Intent.ACTION_DIAL)
+        intent.data = Uri.parse("tel:$phoneNumber")
+
+        // Intent 실행
+        startActivity(intent)
+    }
+
+    private fun sendMessage() {
+        // 받는 사람의 전화번호
+        val phoneNumber = UserInfoItem?.phoneNumber
+
+        // 메시지 작성 앱으로 이동하는 Intent 생성
+        val intent = Intent(Intent.ACTION_SENDTO)
+        intent.data = Uri.parse("smsto:$phoneNumber")
+        intent.putExtra(SMS_BODY, "${UserInfoItem?.name} 안녕하세요, 메시지 내용입니다.")
+
+        // Intent 실행
+        startActivity(intent)
     }
 }
