@@ -12,7 +12,7 @@ object DummyUserInfo {
             "010-1234-5678",
             "CSKim@naver.com",
             "메모 내용입니다.",
-            true,
+            false,
             null,
             mutableListOf(
                 LocalDateTime.of(2024, 1, 19, 12, 0, 0),
@@ -26,7 +26,7 @@ object DummyUserInfo {
             "010-2345-6789",
             "LYH@gmail.com",
             "오늘은 날씨가 좋네요.",
-            true,
+            false,
             null,
             mutableListOf(
                 LocalDateTime.of(2024, 1, 20, 12, 0, 0),
@@ -264,7 +264,7 @@ object DummyUserInfo {
         }
     }
 
-    private fun findItemByNameAndPhoneNumber(name: String, phoneNumber: String): UserInfo? {
+    fun findItemByNameAndPhoneNumber(name: String, phoneNumber: String): UserInfo? {
         return DummyData.find { it.name == name && it.phoneNumber == phoneNumber }
     }
 
