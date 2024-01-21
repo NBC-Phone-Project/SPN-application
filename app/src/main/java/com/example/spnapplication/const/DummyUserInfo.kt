@@ -1,8 +1,10 @@
-package com.example.spnapplication
+package com.example.spnapplication.const
 
+import com.example.spnapplication.R
+import com.example.spnapplication.UserInfo
 import java.time.LocalDateTime
 
-object Const {
+object DummyUserInfo {
     val DummyData: MutableList<UserInfo> = mutableListOf(
         UserInfo(
             R.drawable.iv_mypage_myprofile,

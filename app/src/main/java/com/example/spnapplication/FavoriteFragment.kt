@@ -33,7 +33,7 @@ class FavoriteFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         /* filter 함수로 DummyData의 isLike가 True이면 True인 데이터만 출력 */
-        val userList = Const.DummyData.filter { it.isLike }.toMutableList()
+        val userList = DummyUserInfo.DummyData.filter { it.isLike }.toMutableList()
 
         val adapter = UserAdapter(userList)
         binding?.rvContactRecyclerView?.adapter = adapter

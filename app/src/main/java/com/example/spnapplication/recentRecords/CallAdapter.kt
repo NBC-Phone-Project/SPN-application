@@ -4,28 +4,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spnapplication.R
-import com.example.spnapplication.util.Util.formatToHM
 import com.example.spnapplication.databinding.ItemRecentRecordsContentBinding
 import com.example.spnapplication.databinding.ItemRecentRecordsStickyHeaderBinding
+import com.example.spnapplication.utils.Utils.formatToHM
 
 class CallAdapter(private val callGroups: MutableList<RecentCalls>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-//    private val mItems: MutableList<RecentCalls> = mutableListOf()
 
     companion object {
         private const val VIEW_TYPE_HEADER = 0
         private const val VIEW_TYPE_ITEM = 1
     }
-
-//    init {
-//        for (callGroup in callGroups) {
-//            mItems.add(RecentCalls.CallHeader(callGroup.formatToYMD()))
-//            mItems.addAll(callGroup.calls.map { call ->
-//                RecentCalls.CallItem(call.name, call.phoneNumber, call.time)
-//            })
-//        }
-//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)

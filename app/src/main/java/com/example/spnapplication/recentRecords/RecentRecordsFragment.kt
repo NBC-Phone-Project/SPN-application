@@ -8,10 +8,10 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.spnapplication.Const
-import com.example.spnapplication.util.Util.formatToYMD
+import com.example.spnapplication.const.DummyUserInfo
 import com.example.spnapplication.databinding.FragmentRecentRecordsBinding
 import com.example.spnapplication.ui.HeaderItemDecoration
+import com.example.spnapplication.utils.Utils.formatToYMD
 import java.time.LocalDateTime
 
 class RecentRecordsFragment : Fragment() {
@@ -49,7 +49,7 @@ class RecentRecordsFragment : Fragment() {
     private fun convertUserDataToCallGroups(): MutableList<RecentCalls> {
         val callGroups = CallGroups(mutableListOf())
 
-        Const.DummyData.forEach { userData ->
+        DummyUserInfo.DummyData.forEach { userData ->
             userData.mutableListOf.forEach { recentCallTime ->
                 val foundGroup =
                     callGroups.callGroups.find { it.time.isSameYearMonthDay(recentCallTime) }
