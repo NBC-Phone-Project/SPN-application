@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.spnapplication.const.DummyUserInfo
 import com.example.spnapplication.databinding.ActivityContactDetailBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -17,15 +18,14 @@ class ContactDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        val userList = Const.DummyData
+        val userList = DummyUserInfo.DummyData
         val adapter = UserAdapter(userList)
 
         with(binding) {
-            UserInfoItem?.let { ivUserImage.setImageResource(it.userImage) }
-            UserInfoItem?.let { ivUserImage.setImageURI(it.profileImage) }
-            tvUsername.text = UserInfoItem?.userName
-            tvNumber.text = UserInfoItem?.userNumber
-            tvEmail.text = UserInfoItem?.userEmail
+            //기본이미지, Uri 이미지 출력
+            tvUsername.text = UserInfoItem?.name
+            tvNumber.text = UserInfoItem?.phoneNumber
+            tvEmail.text = UserInfoItem?.email
             isLike = UserInfoItem?.isLike == true
 
             ivActionBarLike.setImageResource(

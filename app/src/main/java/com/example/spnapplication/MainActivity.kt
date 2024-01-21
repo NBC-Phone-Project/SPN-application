@@ -35,10 +35,10 @@ class MainActivity : AppCompatActivity() {
             adapter = viewPager2Adatper
         }
         val iconList = ArrayList<Drawable?>()
-        iconList.add(ContextCompat.getDrawable(this, R.drawable.ic_circle))
-        iconList.add(ContextCompat.getDrawable(this, R.drawable.ic_circle))
-        iconList.add(ContextCompat.getDrawable(this, R.drawable.ic_circle))
-        iconList.add(ContextCompat.getDrawable(this, R.drawable.ic_circle))
+        iconList.add(ContextCompat.getDrawable(this, R.drawable.ic_dial_24dp))
+        iconList.add(ContextCompat.getDrawable(this, R.drawable.ic_log_24dp))
+        iconList.add(ContextCompat.getDrawable(this, R.drawable.ic_like_24dp))
+        iconList.add(ContextCompat.getDrawable(this, R.drawable.ic_mypage_24dp))
 
 
         //ViewPager, TabLayout 연결

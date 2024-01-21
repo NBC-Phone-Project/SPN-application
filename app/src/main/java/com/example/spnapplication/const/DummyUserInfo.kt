@@ -1,8 +1,10 @@
-package com.example.spnapplication
+package com.example.spnapplication.const
 
+import com.example.spnapplication.R
+import com.example.spnapplication.UserInfo
 import java.time.LocalDateTime
 
-object Const {
+object DummyUserInfo {
     val DummyData: MutableList<UserInfo> = mutableListOf(
         UserInfo(
             R.drawable.iv_mypage_myprofile,
@@ -243,4 +245,35 @@ object Const {
             )
         ),
     )
+
+
+    private fun findByUserInfo(userInfo: UserInfo) : UserInfo?{
+        return DummyData.find { it == userInfo }
+    }
+
+    fun toggleLikeState(userInfo: UserInfo): Boolean {
+        userInfo.let {
+            it.isLike = !it.isLike
+            return it.isLike
+        }
+    }
+
+    fun removeUserByUserInfo(userInfo: UserInfo) {
+        userInfo.let {
+            DummyData.remove(it)
+        }
+    }
+
+    private fun findItemByNameAndPhoneNumber(name: String, phoneNumber: String): UserInfo? {
+        return DummyData.find { it.name == name && it.phoneNumber == phoneNumber }
+    }
+
+    fun removeUserByNameAndPhoneNumber(name: String, phoneNumber: String) {
+        val userToRemove = findItemByNameAndPhoneNumber(name, phoneNumber)
+        userToRemove?.let {
+            DummyData.remove(it)
+        }
+    }
+
+
 }

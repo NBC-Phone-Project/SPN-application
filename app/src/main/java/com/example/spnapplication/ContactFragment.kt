@@ -18,8 +18,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.spnapplication.const.DummyUserInfo
 import com.example.spnapplication.databinding.FragmentContactBinding
-import java.time.LocalDateTime
 
 class ContactFragment : Fragment(), OnItemAddedListener {
 
@@ -38,7 +38,7 @@ class ContactFragment : Fragment(), OnItemAddedListener {
         recyclerView = binding!!.rvContactRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        val userList = Const.DummyData
+        val userList = DummyUserInfo.DummyData
 
         binding?.ibContactGoToAddContact?.setOnClickListener {
             val dialogFragment = DialogAddItemFragment()
@@ -85,7 +85,7 @@ class ContactFragment : Fragment(), OnItemAddedListener {
                 val selectedUser = userList[position] as UserInfo
                 // Intent로 전화걸기
                 val intent = Intent(Intent.ACTION_DIAL)
-                intent.data = Uri.parse("tel:${selectedUser.userNumber}")
+                intent.data = Uri.parse("tel:${selectedUser.phoneNumber}")
                 startActivity(intent)
             }
         }
@@ -163,6 +163,11 @@ class ContactFragment : Fragment(), OnItemAddedListener {
         val adapter = recyclerView.adapter as UserAdapter
         adapter.addContact(item)
         adapter.notifyItemInserted(adapter.itemCount - 1)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding?.rvContactRecyclerView?.adapter?.notifyDataSetChanged()
     }
 }
 

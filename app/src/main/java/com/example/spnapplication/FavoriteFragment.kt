@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.spnapplication.databinding.FragmentContactBinding
+import com.example.spnapplication.const.DummyUserInfo
 import com.example.spnapplication.databinding.FragmentFavoriteBinding
 
 class FavoriteFragment : Fragment() {
@@ -39,7 +39,7 @@ class FavoriteFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         /* filter 함수로 DummyData의 isLike가 True이면 True인 데이터만 출력 */
-        val userList = Const.DummyData.filter { it.isLike }.toMutableList()
+        val userList = DummyUserInfo.DummyData.filter { it.isLike }.toMutableList()
 
         val adapter = UserAdapter(userList)
         binding?.rvContactRecyclerView?.adapter = adapter
@@ -62,7 +62,7 @@ class FavoriteFragment : Fragment() {
                 val selectedUser = userList[position] as UserInfo
                 // Intent로 전화걸기
                 val intent = Intent(Intent.ACTION_DIAL)
-                intent.data = Uri.parse("tel:${selectedUser.userNumber}")
+                intent.data = Uri.parse("tel:${selectedUser.phoneNumber}")
                 startActivity(intent)
             }
         }
