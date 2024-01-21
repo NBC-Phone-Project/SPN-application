@@ -16,7 +16,7 @@
         <activity
             android:name=".EditMyPageActivity"
             android:exported="false" />
-        <activity android:name=".ContactDetailActivity"
+        <activity android:name=".contactDetail.ContactDetailActivity"
             android:exported="false"/>
         <activity
             android:name=".MainActivity"
