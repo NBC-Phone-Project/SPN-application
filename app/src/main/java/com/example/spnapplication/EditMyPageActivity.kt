@@ -89,6 +89,7 @@ class EditMyPageActivity : AppCompatActivity() {
             }
         }
 
+        // + 버튼 클릭 시 갤러리로 이동
         binding.ivAddPic.setOnClickListener {
             openGallery(this, 111)
         }
@@ -100,6 +101,7 @@ class EditMyPageActivity : AppCompatActivity() {
 
     }
 
+    // 갤러리에서 불러온 사진 띄우기
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -109,6 +111,7 @@ class EditMyPageActivity : AppCompatActivity() {
         }
     }
 
+    // Intent로 갤러리에 접근
     fun openGallery(activity: Activity, requestCode: Int) {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
