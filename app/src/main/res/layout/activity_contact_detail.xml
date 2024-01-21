@@ -65,7 +65,7 @@
             android:background="@drawable/shape_contact_detail_circular_view"
             android:clipToOutline="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/img_default_profile"
             app:layout_constraintBottom_toTopOf="@id/tv_username"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
