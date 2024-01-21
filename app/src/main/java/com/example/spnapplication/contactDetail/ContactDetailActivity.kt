@@ -1,13 +1,17 @@
 package com.example.spnapplication.contactDetail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.telephony.SmsManager
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.spnapplication.R
 import com.example.spnapplication.UserInfo
 import com.example.spnapplication.const.DummyUserInfo
+import com.example.spnapplication.const.IntentKeys.SMS_BODY
 import com.example.spnapplication.const.IntentKeys.USER_INFO
 import com.example.spnapplication.databinding.ActivityContactDetailBinding
 
@@ -36,7 +40,34 @@ class ContactDetailActivity : AppCompatActivity() {
             ivActionBarBack.setOnClickListener { finish() }
             ivActionBarLike.setOnClickListener { handleLikeAction() }
             ivActionBarDelete.setOnClickListener { handleDeleteAction() }
+            tvSendMessage.setOnClickListener { sendMessage() }
+            tvMakeCall.setOnClickListener { makeCall() }
         }
+    }
+
+    private fun makeCall() {
+        // 전화 걸 대상의 전화번호
+        val phoneNumber = userInfo?.phoneNumber
+
+        // 전화 걸기 Intent 생성
+        val intent = Intent(Intent.ACTION_DIAL)
+        intent.data = Uri.parse("tel:$phoneNumber")
+
+        // Intent 실행
+        startActivity(intent)
+    }
+
+    private fun sendMessage() {
+        // 받는 사람의 전화번호
+        val phoneNumber = userInfo?.phoneNumber
+
+        // 메시지 작성 앱으로 이동하는 Intent 생성
+        val intent = Intent(Intent.ACTION_SENDTO)
+        intent.data = Uri.parse("smsto:$phoneNumber")
+        intent.putExtra(SMS_BODY, "${userInfo?.name} 안녕하세요, 메시지 내용입니다.")
+
+        // Intent 실행
+        startActivity(intent)
     }
 
     private fun handleDeleteAction() {
