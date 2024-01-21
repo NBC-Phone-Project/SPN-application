@@ -93,6 +93,11 @@ class EditMyPageActivity : AppCompatActivity() {
             openGallery(this, 111)
         }
 
+        // 뒤로가기 버튼 클릭 시 finish
+        binding.icMypageBack.setOnClickListener {
+            finish()
+        }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
