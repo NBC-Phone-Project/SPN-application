@@ -265,7 +265,7 @@ object DummyUserInfo {
     }
 
     private fun findItemByNameAndPhoneNumber(name: String, phoneNumber: String): UserInfo? {
-        return DummyData.find { it.userName == name && it.userNumber == phoneNumber }
+        return DummyData.find { it.name == name && it.phoneNumber == phoneNumber }
     }
 
     fun removeUserByNameAndPhoneNumber(name: String, phoneNumber: String) {
