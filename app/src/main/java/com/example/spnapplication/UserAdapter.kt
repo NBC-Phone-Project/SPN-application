@@ -42,7 +42,8 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
         val btnCall = binding.ivContactCall
         val remove = binding.tvRemove
         val btnGoDetail = binding.clContactGoToDetailBtn
-        val likeBg = binding.ivContactLike
+        val bg_back = binding.ivContactLike
+
     }
 
 
@@ -86,11 +87,10 @@ class UserAdapter(val mItems: MutableList<UserInfo>) : RecyclerView.Adapter<View
         holder.btnGoDetail.setOnClickListener {
             goToDetail?.onGoToDetail(it, position)
         }
-
         if (mItems[position].isLike) {
-            holder.likeBg.visibility = View.VISIBLE
+            holder.bg_back.visibility = View.VISIBLE
         } else {
-            holder.likeBg.visibility = View.GONE
+            holder.bg_back.visibility = View.GONE
         }
     }
 

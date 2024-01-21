@@ -1,5 +1,6 @@
 package com.example.spnapplication
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -8,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.widget.LinearLayout
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
@@ -15,8 +19,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spnapplication.const.DummyUserInfo
-import com.example.spnapplication.const.IntentKeys.USER_INFO
-import com.example.spnapplication.contactDetail.ContactDetailActivity
 import com.example.spnapplication.databinding.FragmentContactBinding
 
 class ContactFragment : Fragment(), OnItemAddedListener {
@@ -24,7 +26,9 @@ class ContactFragment : Fragment(), OnItemAddedListener {
     private var _binding: FragmentContactBinding? = null
     private val binding get() = _binding
     private lateinit var recyclerView: RecyclerView
+    lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,8 +54,8 @@ class ContactFragment : Fragment(), OnItemAddedListener {
 
         // 리스트 뷰 아이콘 클릭 시 리스트 뷰 <-> 그리드 뷰 전환
         binding?.ibMainViewChange?.setOnClickListener {
-            if (binding?.rvContactRecyclerView?.layoutManager == lLayoutManager){
-                binding?.rvContactRecyclerView?.layoutManager = GridLayoutManager(context,2)
+            if (binding?.rvContactRecyclerView?.layoutManager == lLayoutManager) {
+                binding?.rvContactRecyclerView?.layoutManager = GridLayoutManager(context, 2)
             } else {
                 binding?.rvContactRecyclerView?.layoutManager = lLayoutManager
             }
@@ -93,8 +97,9 @@ class ContactFragment : Fragment(), OnItemAddedListener {
                 val chooseUser = userList[position]
                 // Intent로 화면 전환, li 데이터전달
                 val intent = Intent(activity, ContactDetailActivity::class.java)
-                intent.putExtra(USER_INFO, chooseUser)
-                activity?.startActivity(intent)
+                intent.putExtra("UserInfo", chooseUser)
+                intent.putExtra("likePosition", position)
+                activityResultLauncher.launch(intent)
             }
         }
 
@@ -126,9 +131,23 @@ class ContactFragment : Fragment(), OnItemAddedListener {
         binding?.ivContactSearch?.setOnClickListener {
             adapter.search(binding?.etContactSearch?.text.toString())
         }
-
+        activityResultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                if (it.resultCode == AppCompatActivity.RESULT_OK) {
+                    val likePosition = it.data?.getIntExtra("likePosition", 0) as Int
+                    val isLike = it.data?.getBooleanExtra("isLike", false) as Boolean
+                    if (isLike) {
+                        userList[likePosition].isLike = true
+                    } else {
+                        if (userList[likePosition].isLike) {
+                            userList[likePosition].isLike = false
+                        }
+                    }
+                    adapter.notifyItemChanged(likePosition,isLike)
+                    adapter.notifyDataSetChanged()
+                }
+            }
         return binding?.root
-
     }
 
     override fun onDestroyView() {
