@@ -13,9 +13,9 @@ class ContactDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         with(binding){
-            tvUsername.text = UserInfoItem?.userName
-            tvNumber.text = UserInfoItem?.userNumber
-            tvEmail.text = UserInfoItem?.userEmail
+            tvUsername.text = UserInfoItem?.name
+            tvNumber.text = UserInfoItem?.phoneNumber
+            tvEmail.text = UserInfoItem?.email
         }
     }
 
