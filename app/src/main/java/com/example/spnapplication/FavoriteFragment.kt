@@ -9,7 +9,12 @@ import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,13 +28,12 @@ class FavoriteFragment : Fragment() {
 
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
-
+    lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         recyclerView = binding!!.rvContactRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -62,6 +66,20 @@ class FavoriteFragment : Fragment() {
                 startActivity(intent)
             }
         }
+
+        // DetailActivity로 데이터 전달 및 화면 전환
+        adapter.goToDetail = object : UserAdapter.GoToDetail {
+            override fun onGoToDetail(view: View, position: Int) {
+                // 선택된 유저
+                val chooseUser = userList[position]
+                // Intent로 화면 전환, li 데이터전달
+                val intent = Intent(activity, ContactDetailActivity::class.java)
+                intent.putExtra("UserInfo", chooseUser)
+                intent.putExtra("likePosition", position)
+                activityResultLauncher.launch(intent)
+            }
+        }
+
         // 플로팅 버튼
         val fadeIn = AlphaAnimation(0f, 1f).apply { duration = 500 }
         val fadeOut = AlphaAnimation(1f, 0f).apply { duration = 500 }
@@ -90,6 +108,24 @@ class FavoriteFragment : Fragment() {
         binding?.ivContactSearch?.setOnClickListener {
             adapter.search(binding?.etContactSearch?.text.toString())
         }
+
+        activityResultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                if (it.resultCode == AppCompatActivity.RESULT_OK) {
+                    val likePosition = it.data?.getIntExtra("likePosition", 0) as Int
+                    val isLike = it.data?.getBooleanExtra("isLike", false) as Boolean
+                    if (isLike) {
+                        userList[likePosition].isLike = true
+                    } else {
+                        if (userList[likePosition].isLike) {
+                            userList[likePosition].isLike = false
+                        }
+                    }
+                    adapter.notifyItemChanged(likePosition, isLike)
+                    adapter.notifyDataSetChanged()
+                }
+            }
+
         return binding.root
     }
 

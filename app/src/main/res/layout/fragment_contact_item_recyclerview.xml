@@ -49,11 +49,23 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:id="@+id/iv_contact_like"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@color/red"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
                 android:id="@+id/iv_contact_userIcon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/shape_contact_circle_40dp"
                 android:clipToOutline="true"
+                android:layout_marginStart="2dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
